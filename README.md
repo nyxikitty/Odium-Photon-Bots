@@ -1,7 +1,5 @@
 # Some bots I made for UserNumber2's Bullet Force
 
-<img width="1317" height="770" alt="image" src="https://github.com/user-attachments/assets/a30a9e99-fea8-4547-b29f-e5f3abeb36a3" />
-
 # WinForms Suck
 
 <img width="1584" height="862" alt="image" src="https://github.com/user-attachments/assets/2b7669e5-7605-4c18-9105-c7c1796b30ef" />
