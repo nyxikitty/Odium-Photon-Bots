@@ -14,7 +14,6 @@ namespace BLF_Odium_Network_Bots
 {
     internal static class Program
     {
-        // Add them HERE instead of top-level
         [DllImport("kernel32.dll", SetLastError = true)]
         private static extern bool AllocConsole();
 
