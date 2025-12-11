@@ -1,0 +1,22 @@
+C:\Users\Snoofz\source\repos\BLF Odium Network Bots\BLF Odium Network Bots\obj\Debug\net8.0-windows\BLF Odium Network Bots.csproj.AssemblyReference.cache
+C:\Users\Snoofz\source\repos\BLF Odium Network Bots\BLF Odium Network Bots\obj\Debug\net8.0-windows\BLF_Odium_Network_Bots.Form1.resources
+C:\Users\Snoofz\source\repos\BLF Odium Network Bots\BLF Odium Network Bots\obj\Debug\net8.0-windows\BLF Odium Network Bots.csproj.GenerateResource.cache
+C:\Users\Snoofz\source\repos\BLF Odium Network Bots\BLF Odium Network Bots\obj\Debug\net8.0-windows\BLF Odium Network Bots.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Snoofz\source\repos\BLF Odium Network Bots\BLF Odium Network Bots\obj\Debug\net8.0-windows\BLF Odium Network Bots.AssemblyInfoInputs.cache
+C:\Users\Snoofz\source\repos\BLF Odium Network Bots\BLF Odium Network Bots\obj\Debug\net8.0-windows\BLF Odium Network Bots.AssemblyInfo.cs
+C:\Users\Snoofz\source\repos\BLF Odium Network Bots\BLF Odium Network Bots\obj\Debug\net8.0-windows\BLF Odium Network Bots.csproj.CoreCompileInputs.cache
+C:\Users\Snoofz\source\repos\BLF Odium Network Bots\BLF Odium Network Bots\bin\Debug\net8.0-windows\BLF Odium Network Bots.exe
+C:\Users\Snoofz\source\repos\BLF Odium Network Bots\BLF Odium Network Bots\bin\Debug\net8.0-windows\BLF Odium Network Bots.deps.json
+C:\Users\Snoofz\source\repos\BLF Odium Network Bots\BLF Odium Network Bots\bin\Debug\net8.0-windows\BLF Odium Network Bots.runtimeconfig.json
+C:\Users\Snoofz\source\repos\BLF Odium Network Bots\BLF Odium Network Bots\bin\Debug\net8.0-windows\BLF Odium Network Bots.dll
+C:\Users\Snoofz\source\repos\BLF Odium Network Bots\BLF Odium Network Bots\bin\Debug\net8.0-windows\BLF Odium Network Bots.pdb
+C:\Users\Snoofz\source\repos\BLF Odium Network Bots\BLF Odium Network Bots\bin\Debug\net8.0-windows\0Harmony.dll
+C:\Users\Snoofz\source\repos\BLF Odium Network Bots\BLF Odium Network Bots\bin\Debug\net8.0-windows\Ionic.Zlib.CF.dll
+C:\Users\Snoofz\source\repos\BLF Odium Network Bots\BLF Odium Network Bots\bin\Debug\net8.0-windows\Photon-NetStandard.dll
+C:\Users\Snoofz\source\repos\BLF Odium Network Bots\BLF Odium Network Bots\bin\Debug\net8.0-windows\PhotonRealtime-DotNet.dll
+C:\Users\Snoofz\source\repos\BLF Odium Network Bots\BLF Odium Network Bots\obj\Debug\net8.0-windows\BLF Odiu.A419D676.Up2Date
+C:\Users\Snoofz\source\repos\BLF Odium Network Bots\BLF Odium Network Bots\obj\Debug\net8.0-windows\BLF Odium Network Bots.dll
+C:\Users\Snoofz\source\repos\BLF Odium Network Bots\BLF Odium Network Bots\obj\Debug\net8.0-windows\refint\BLF Odium Network Bots.dll
+C:\Users\Snoofz\source\repos\BLF Odium Network Bots\BLF Odium Network Bots\obj\Debug\net8.0-windows\BLF Odium Network Bots.pdb
+C:\Users\Snoofz\source\repos\BLF Odium Network Bots\BLF Odium Network Bots\obj\Debug\net8.0-windows\BLF Odium Network Bots.genruntimeconfig.cache
+C:\Users\Snoofz\source\repos\BLF Odium Network Bots\BLF Odium Network Bots\obj\Debug\net8.0-windows\ref\BLF Odium Network Bots.dll
