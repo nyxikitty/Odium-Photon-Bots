@@ -4,8 +4,7 @@
 
 # WinForms Suck
 
-https://github.com/user-attachments/assets/9de005ce-c8e9-489a-9f7d-1d25eb99378c
-
+<img width="1584" height="862" alt="image" src="https://github.com/user-attachments/assets/2b7669e5-7605-4c18-9105-c7c1796b30ef" />
 
 If you want to allocate a console, slap this in Program.cs
 
