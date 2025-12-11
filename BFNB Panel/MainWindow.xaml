@@ -1,0 +1,1590 @@
+﻿<Window x:Class="OdiumBotManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Odium Bot Manager" 
+        Height="900" Width="1600"
+        Background="#16161A"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanResizeWithGrip">
+
+    <Window.Resources>
+        <!-- Odium Themed Color Palette -->
+        <SolidColorBrush x:Key="PrimaryAccent" Color="#FF3B47"/>
+        <SolidColorBrush x:Key="SecondaryAccent" Color="#FF4757"/>
+        <SolidColorBrush x:Key="SuccessColor" Color="#34C759"/>
+        <SolidColorBrush x:Key="WarningColor" Color="#FF9500"/>
+        <SolidColorBrush x:Key="DangerColor" Color="#FF3B47"/>
+        <SolidColorBrush x:Key="TextPrimary" Color="#FFFFFF"/>
+        <SolidColorBrush x:Key="TextSecondary" Color="#8E8E93"/>
+        <SolidColorBrush x:Key="GlassLight" Color="#40FFFFFF"/>
+        <SolidColorBrush x:Key="GlassDark" Color="#30000000"/>
+        <SolidColorBrush x:Key="SurfaceLight" Color="#1AFFFFFF"/>
+        <SolidColorBrush x:Key="SurfaceDark" Color="#20000000"/>
+
+        <!-- Glassmorphic Button Style -->
+        <Style x:Key="GlassButton" TargetType="Button">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#30FFFFFF" Offset="0"/>
+                        <GradientStop Color="#20FFFFFF" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#40FFFFFF" Offset="0"/>
+                        <GradientStop Color="#10FFFFFF" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Padding" Value="20,10"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border"
+                                Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="10"
+                                Padding="{TemplateBinding Padding}">
+                            <Border.Effect>
+                                <DropShadowEffect Color="#20000000" BlurRadius="12" 
+                                                ShadowDepth="2" Opacity="0.3"/>
+                            </Border.Effect>
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center"
+                                            TextBlock.FontWeight="{TemplateBinding FontWeight}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                            <GradientStop Color="#40FFFFFF" Offset="0"/>
+                                            <GradientStop Color="#30FFFFFF" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                            <GradientStop Color="#20FFFFFF" Offset="0"/>
+                                            <GradientStop Color="#10FFFFFF" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Primary Action Button -->
+        <Style x:Key="PrimaryButton" TargetType="Button" BasedOn="{StaticResource GlassButton}">
+            <Setter Property="Background" Value="{StaticResource PrimaryAccent}"/>
+            <Setter Property="BorderBrush" Value="#30FFFFFF"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF4C5C"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#DD2A36"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Success Button -->
+        <Style x:Key="SuccessButton" TargetType="Button" BasedOn="{StaticResource GlassButton}">
+            <Setter Property="Background" Value="{StaticResource SuccessColor}"/>
+            <Setter Property="BorderBrush" Value="#30FFFFFF"/>
+        </Style>
+
+        <!-- Warning Button -->
+        <Style x:Key="WarningButton" TargetType="Button" BasedOn="{StaticResource GlassButton}">
+            <Setter Property="Background" Value="{StaticResource WarningColor}"/>
+            <Setter Property="BorderBrush" Value="#30FFFFFF"/>
+        </Style>
+
+        <!-- Danger Button -->
+        <Style x:Key="DangerButton" TargetType="Button" BasedOn="{StaticResource GlassButton}">
+            <Setter Property="Background" Value="{StaticResource DangerColor}"/>
+            <Setter Property="BorderBrush" Value="#30FFFFFF"/>
+        </Style>
+
+        <!-- Glass TextBox Style -->
+        <Style x:Key="GlassTextBox" TargetType="TextBox">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#20FFFFFF" Offset="0"/>
+                        <GradientStop Color="#15FFFFFF" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+            <Setter Property="BorderBrush" Value="#30FFFFFF"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="12,8"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="CaretBrush" Value="{StaticResource TextPrimary}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="8">
+                            <ScrollViewer x:Name="PART_ContentHost" 
+                                        Margin="{TemplateBinding Padding}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Glass ComboBox Style -->
+        <Style x:Key="GlassComboBox" TargetType="ComboBox">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#20FFFFFF" Offset="0"/>
+                        <GradientStop Color="#15FFFFFF" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+            <Setter Property="BorderBrush" Value="#30FFFFFF"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="12,10"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="MinHeight" Value="40"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid>
+                            <ToggleButton x:Name="ToggleButton"
+                                        Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        Focusable="False"
+                                        IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                        ClickMode="Press">
+                                <ToggleButton.Template>
+                                    <ControlTemplate TargetType="ToggleButton">
+                                        <Border x:Name="Border"
+                                                Background="{TemplateBinding Background}"
+                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                BorderThickness="{TemplateBinding BorderThickness}"
+                                                CornerRadius="8">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="20"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Path Grid.Column="1"
+                                                      HorizontalAlignment="Center"
+                                                      VerticalAlignment="Center"
+                                                      Data="M 0 0 L 4 4 L 8 0 Z"
+                                                      Fill="{StaticResource TextSecondary}"/>
+                                            </Grid>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="Border" Property="Background">
+                                                    <Setter.Value>
+                                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                                            <GradientStop Color="#30FFFFFF" Offset="0"/>
+                                                            <GradientStop Color="#25FFFFFF" Offset="1"/>
+                                                        </LinearGradientBrush>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </ToggleButton.Template>
+                            </ToggleButton>
+                            <ContentPresenter x:Name="ContentSite"
+                                            IsHitTestVisible="False"
+                                            Content="{TemplateBinding SelectionBoxItem}"
+                                            ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                            ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                            Margin="12,0,32,0"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Left"/>
+                            <Popup x:Name="Popup"
+                                   Placement="Bottom"
+                                   IsOpen="{TemplateBinding IsDropDownOpen}"
+                                   AllowsTransparency="True"
+                                   Focusable="False"
+                                   PopupAnimation="Slide">
+                                <Grid x:Name="DropDown"
+                                      SnapsToDevicePixels="True"
+                                      MinWidth="{TemplateBinding ActualWidth}"
+                                      MaxHeight="300">
+                                    <Border x:Name="DropDownBorder"
+                                            Background="#2D2D30"
+                                            BorderBrush="#3F3F46"
+                                            BorderThickness="1"
+                                            CornerRadius="8"
+                                            Margin="0,4,0,0">
+                                        <Border.Effect>
+                                            <DropShadowEffect Color="#40000000" BlurRadius="16" ShadowDepth="4" Opacity="0.5"/>
+                                        </Border.Effect>
+                                        <ScrollViewer Margin="4" SnapsToDevicePixels="True">
+                                            <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained"/>
+                                        </ScrollViewer>
+                                    </Border>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- ComboBoxItem Style -->
+        <Style TargetType="ComboBoxItem">
+            <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Padding" Value="12,8"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBoxItem">
+                        <Border x:Name="Border"
+                                Background="{TemplateBinding Background}"
+                                Padding="{TemplateBinding Padding}"
+                                CornerRadius="4"
+                                Margin="4,2">
+                            <ContentPresenter/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsHighlighted" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="{StaticResource PrimaryAccent}"/>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#20FFFFFF"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Modern ScrollBar Style -->
+        <Style TargetType="ScrollBar">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ScrollBar">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Track x:Name="PART_Track" IsDirectionReversed="True">
+                                <Track.Thumb>
+                                    <Thumb>
+                                        <Thumb.Template>
+                                            <ControlTemplate TargetType="Thumb">
+                                                <Border x:Name="ThumbBorder"
+                                                        Background="#40FFFFFF"
+                                                        CornerRadius="4"
+                                                        Width="8"
+                                                        Margin="2"/>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter TargetName="ThumbBorder" Property="Background" Value="#60FFFFFF"/>
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Thumb.Template>
+                                    </Thumb>
+                                </Track.Thumb>
+                            </Track>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="Orientation" Value="Horizontal">
+                    <Setter Property="Height" Value="12"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ScrollBar">
+                                <Grid>
+                                    <Track x:Name="PART_Track">
+                                        <Track.Thumb>
+                                            <Thumb>
+                                                <Thumb.Template>
+                                                    <ControlTemplate TargetType="Thumb">
+                                                        <Border x:Name="ThumbBorder"
+                                                                Background="#40FFFFFF"
+                                                                CornerRadius="4"
+                                                                Height="8"
+                                                                Margin="2"/>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter TargetName="ThumbBorder" Property="Background" Value="#60FFFFFF"/>
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Thumb.Template>
+                                            </Thumb>
+                                        </Track.Thumb>
+                                    </Track>
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Glass ListBox Style -->
+        <Style x:Key="GlassListBox" TargetType="ListBox">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#20FFFFFF" Offset="0"/>
+                        <GradientStop Color="#15FFFFFF" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+            <Setter Property="BorderBrush" Value="#30FFFFFF"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBox">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="12">
+                            <ScrollViewer Padding="8">
+                                <ItemsPresenter/>
+                            </ScrollViewer>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- ListBoxItem Style -->
+        <Style TargetType="ListBoxItem">
+            <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Padding" Value="12,10"/>
+            <Setter Property="Margin" Value="4,2"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border x:Name="Border"
+                                Background="{TemplateBinding Background}"
+                                Padding="{TemplateBinding Padding}"
+                                CornerRadius="8"
+                                Margin="{TemplateBinding Margin}">
+                            <ContentPresenter/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#20FFFFFF"/>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="{StaticResource PrimaryAccent}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Glass GroupBox Style -->
+        <Style x:Key="GlassGroupBox" TargetType="GroupBox">
+            <Setter Property="Foreground" Value="{StaticResource TextSecondary}"/>
+            <Setter Property="BorderBrush" Value="#30FFFFFF"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="16"/>
+            <Setter Property="Margin" Value="0,0,0,16"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="GroupBox">
+                        <Border Background="#15FFFFFF"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="12">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <ContentPresenter Grid.Row="0"
+                                                ContentSource="Header"
+                                                Margin="16,12,16,0"
+                                                TextBlock.FontSize="12"
+                                                TextBlock.FontWeight="SemiBold"
+                                                TextBlock.Foreground="{StaticResource TextSecondary}"/>
+                                <ContentPresenter Grid.Row="1" 
+                                                Margin="{TemplateBinding Padding}"/>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Modern TabControl Style -->
+        <Style TargetType="TabControl">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+
+        <Style TargetType="TabItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabItem">
+                        <Border x:Name="Border" 
+                                Background="Transparent"
+                                BorderThickness="0"
+                                CornerRadius="10"
+                                Margin="0,0,8,0"
+                                Padding="20,12">
+                            <ContentPresenter x:Name="ContentSite"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Center"
+                                            ContentSource="Header"
+                                            TextBlock.Foreground="{StaticResource TextSecondary}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="Border" Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                            <GradientStop Color="#30FFFFFF" Offset="0"/>
+                                            <GradientStop Color="#20FFFFFF" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="ContentSite" Property="TextBlock.Foreground" Value="{StaticResource TextPrimary}"/>
+                                <Setter TargetName="ContentSite" Property="TextBlock.FontWeight" Value="SemiBold"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#10FFFFFF"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="FontSize" Value="13"/>
+        </Style>
+
+        <!-- CheckBox Style -->
+        <Style TargetType="CheckBox">
+            <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+            <Setter Property="FontSize" Value="13"/>
+        </Style>
+    </Window.Resources>
+
+    <!-- Main Window with Glassmorphic Design -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="44"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Bar -->
+        <Border Grid.Row="0" 
+                Background="#1E1E20" 
+                BorderBrush="#3F3F46"
+                BorderThickness="0,0,0,1">
+            <Grid Margin="20,0">
+                <TextBlock Text="Odium Bot Manager" 
+                           FontSize="14" 
+                           FontWeight="SemiBold" 
+                           Foreground="{StaticResource TextPrimary}"
+                           VerticalAlignment="Center"/>
+            </Grid>
+        </Border>
+
+        <!-- Main Content Grid -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="280"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Left Sidebar -->
+            <Border Grid.Column="0" 
+                        Background="#1E1E20" 
+                        BorderBrush="#3F3F46"
+                        BorderThickness="0,0,1,0" 
+                        Padding="20">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Header -->
+                    <StackPanel Grid.Row="0" Margin="0,0,0,20">
+                        <TextBlock Text="Bot Instances" 
+                                       FontSize="20" 
+                                       FontWeight="Bold" 
+                                       Foreground="{StaticResource TextPrimary}"
+                                       Margin="0,0,0,6"/>
+                        <TextBlock Text="Select a bot to manage" 
+                                       FontSize="12" 
+                                       Foreground="{StaticResource TextSecondary}"/>
+                    </StackPanel>
+
+                    <!-- Bot List -->
+                    <ListBox x:Name="lstBots" 
+                                 Grid.Row="1"
+                                 Style="{StaticResource GlassListBox}"
+                                 SelectionChanged="lstBots_SelectionChanged"
+                                 Margin="0,0,0,20"/>
+
+                    <!-- Action Buttons -->
+                    <StackPanel Grid.Row="2">
+                        <Button Content="Add Bot" 
+                                    Style="{StaticResource PrimaryButton}"
+                                    Click="btnAddBot_Click"
+                                    Margin="0,0,0,10"/>
+                        <Button x:Name="btnRemoveBot" 
+                                    Content="Remove Bot" 
+                                    Style="{StaticResource GlassButton}"
+                                    Click="btnRemoveBot_Click"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <!-- Main Content Area -->
+            <Grid Grid.Column="1" Margin="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Status Bar -->
+                <Border Grid.Row="0" 
+                            Background="#15FFFFFF"
+                            BorderBrush="#30FFFFFF"
+                            BorderThickness="1"
+                            CornerRadius="12"
+                            Padding="24,16"
+                            Margin="0,0,0,20">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Status -->
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="STATUS" 
+                                           Foreground="{StaticResource TextSecondary}" 
+                                           FontSize="10"
+                                           FontWeight="SemiBold"
+                                           Margin="0,0,0,4"/>
+                            <TextBlock x:Name="lblConnStatusVal" 
+                                           Text="Disconnected" 
+                                           Foreground="{StaticResource SuccessColor}" 
+                                           FontWeight="SemiBold" 
+                                           FontSize="15"/>
+                        </StackPanel>
+
+                        <!-- Ping -->
+                        <StackPanel Grid.Column="1">
+                            <TextBlock Text="PING" 
+                                           Foreground="{StaticResource TextSecondary}" 
+                                           FontSize="10"
+                                           FontWeight="SemiBold"
+                                           Margin="0,0,0,4"/>
+                            <TextBlock x:Name="lblPingVal" 
+                                           Text="—" 
+                                           Foreground="{StaticResource TextPrimary}" 
+                                           FontWeight="SemiBold" 
+                                           FontSize="15"/>
+                        </StackPanel>
+
+                        <!-- Room -->
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Text="ROOM" 
+                                           Foreground="{StaticResource TextSecondary}" 
+                                           FontSize="10"
+                                           FontWeight="SemiBold"
+                                           Margin="0,0,0,4"/>
+                            <TextBlock x:Name="lblRoomVal" 
+                                           Text="—" 
+                                           Foreground="{StaticResource TextPrimary}" 
+                                           FontWeight="SemiBold" 
+                                           FontSize="15"/>
+                        </StackPanel>
+
+                        <!-- Players -->
+                        <StackPanel Grid.Column="3">
+                            <TextBlock Text="PLAYERS" 
+                                           Foreground="{StaticResource TextSecondary}" 
+                                           FontSize="10"
+                                           FontWeight="SemiBold"
+                                           Margin="0,0,0,4"/>
+                            <TextBlock x:Name="lblPlayerCountVal" 
+                                           Text="—" 
+                                           Foreground="{StaticResource TextPrimary}" 
+                                           FontWeight="SemiBold" 
+                                           FontSize="15"/>
+                        </StackPanel>
+
+                        <!-- Master Client -->
+                        <StackPanel Grid.Column="4">
+                            <TextBlock Text="MASTER CLIENT" 
+                                           Foreground="{StaticResource TextSecondary}" 
+                                           FontSize="10"
+                                           FontWeight="SemiBold"
+                                           Margin="0,0,0,4"/>
+                            <TextBlock x:Name="lblMasterVal" 
+                                           Text="—" 
+                                           Foreground="{StaticResource TextPrimary}" 
+                                           FontWeight="SemiBold" 
+                                           FontSize="15"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!-- Tabbed Content -->
+                <TabControl Grid.Row="1">
+                    <!-- Configuration Tab -->
+                    <TabItem Header="Configuration">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <StackPanel Margin="0,20,0,0">
+                                <!-- Bot Config -->
+                                <GroupBox Header="BOT CONFIGURATION" Style="{StaticResource GlassGroupBox}">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,10,0">
+                                            <TextBlock Text="Bot Name" 
+                                                           Foreground="{StaticResource TextSecondary}" 
+                                                           FontSize="11"
+                                                           FontWeight="Medium"
+                                                           Margin="0,0,0,6"/>
+                                            <TextBox x:Name="txtBotName" 
+                                                         Text="PC-Bot_1234" 
+                                                         Style="{StaticResource GlassTextBox}"/>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Row="0" Grid.Column="1" Margin="10,0,0,0">
+                                            <TextBlock Text="Clan Tag" 
+                                                           Foreground="{StaticResource TextSecondary}" 
+                                                           FontSize="11"
+                                                           FontWeight="Medium"
+                                                           Margin="0,0,0,6"/>
+                                            <TextBox x:Name="txtClanTag" 
+                                                         Text="[BOT]" 
+                                                         Style="{StaticResource GlassTextBox}"/>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,16,10,0">
+                                            <TextBlock Text="Team" 
+                                                           Foreground="{StaticResource TextSecondary}" 
+                                                           FontSize="11"
+                                                           FontWeight="Medium"
+                                                           Margin="0,0,0,6"/>
+                                            <ComboBox x:Name="cmbTeam" Style="{StaticResource GlassComboBox}">
+                                                <ComboBoxItem Content="Team 1" IsSelected="True"/>
+                                                <ComboBoxItem Content="Team 2"/>
+                                            </ComboBox>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Row="1" Grid.Column="1" Margin="10,16,0,0">
+                                            <TextBlock Text="Rank" 
+                                                           Foreground="{StaticResource TextSecondary}" 
+                                                           FontSize="11"
+                                                           FontWeight="Medium"
+                                                           Margin="0,0,0,6"/>
+                                            <TextBox x:Name="nudRank" 
+                                                         Text="200" 
+                                                         Style="{StaticResource GlassTextBox}"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </GroupBox>
+
+                                <!-- Connection Actions -->
+                                <GroupBox Header="CONNECTION ACTIONS" Style="{StaticResource GlassGroupBox}">
+                                    <UniformGrid Columns="3" HorizontalAlignment="Stretch">
+                                        <Button Content="Connect" 
+                                                    Style="{StaticResource PrimaryButton}" 
+                                                    Click="btnConnect_Click" 
+                                                    Margin="0,0,10,0"/>
+                                        <Button Content="Disconnect" 
+                                                    Style="{StaticResource GlassButton}" 
+                                                    Click="btnDisconnect_Click" 
+                                                    Margin="5,0"/>
+                                        <Button Content="Spawn Bot" 
+                                                    Style="{StaticResource SuccessButton}" 
+                                                    Click="btnSpawn_Click" 
+                                                    Margin="10,0,0,0"/>
+                                    </UniformGrid>
+                                </GroupBox>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+
+                    <!-- Rooms Tab -->
+                    <TabItem Header="Rooms">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <StackPanel Margin="0,20,0,0">
+                                <!-- Quick Join -->
+                                <GroupBox Header="QUICK JOIN" Style="{StaticResource GlassGroupBox}">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Button Grid.Column="0" 
+                                                    Content="Join Random Room" 
+                                                    Style="{StaticResource PrimaryButton}" 
+                                                    Click="btnJoinRandom_Click" 
+                                                    Margin="0,0,10,0"/>
+                                        <Button Grid.Column="1" 
+                                                    Content="Join Random (All Bots)" 
+                                                    Style="{StaticResource GlassButton}" 
+                                                    Click="btnJoinRandomAll_Click" 
+                                                    Margin="10,0,0,0"/>
+                                    </Grid>
+                                </GroupBox>
+
+                                <!-- Join by Name -->
+                                <GroupBox Header="JOIN SPECIFIC ROOM" Style="{StaticResource GlassGroupBox}">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBox x:Name="txtRoomName" 
+                                                     Grid.Row="0"
+                                                     Style="{StaticResource GlassTextBox}"
+                                                     Text=""/>
+
+                                        <Grid Grid.Row="1" Margin="0,12,0,0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Button Grid.Column="0" 
+                                                        Content="Join Room" 
+                                                        Style="{StaticResource PrimaryButton}" 
+                                                        Click="btnJoinByName_Click" 
+                                                        Margin="0,0,10,0"/>
+                                            <Button Grid.Column="1" 
+                                                        Content="Join Room (All)" 
+                                                        Style="{StaticResource GlassButton}" 
+                                                        Click="btnJoinByNameAll_Click" 
+                                                        Margin="10,0,0,0"/>
+                                        </Grid>
+                                    </Grid>
+                                </GroupBox>
+
+                                <!-- Create Room -->
+                                <GroupBox Header="CREATE NEW ROOM" Style="{StaticResource GlassGroupBox}">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,10,0">
+                                            <TextBlock Text="Map" 
+                                                           Foreground="{StaticResource TextSecondary}" 
+                                                           FontSize="11"
+                                                           FontWeight="Medium"
+                                                           Margin="0,0,0,6"/>
+                                            <ComboBox x:Name="cmbMap" Style="{StaticResource GlassComboBox}">
+                                                <ComboBoxItem Content="Outpost" IsSelected="True"/>
+                                                <ComboBoxItem Content="Woods"/>
+                                                <ComboBoxItem Content="Park"/>
+                                                <ComboBoxItem Content="Urban"/>
+                                                <ComboBoxItem Content="Village"/>
+                                                <ComboBoxItem Content="SwampFox"/>
+                                            </ComboBox>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Row="0" Grid.Column="1" Margin="10,0,0,0">
+                                            <TextBlock Text="Game Mode" 
+                                                           Foreground="{StaticResource TextSecondary}" 
+                                                           FontSize="11"
+                                                           FontWeight="Medium"
+                                                           Margin="0,0,0,6"/>
+                                            <ComboBox x:Name="cmbGameMode" Style="{StaticResource GlassComboBox}">
+                                                <ComboBoxItem Content="Team Deathmatch" IsSelected="True"/>
+                                                <ComboBoxItem Content="Free For All"/>
+                                                <ComboBoxItem Content="VIP"/>
+                                                <ComboBoxItem Content="Gun Game"/>
+                                            </ComboBox>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,16,10,0">
+                                            <TextBlock Text="Max Players" 
+                                                           Foreground="{StaticResource TextSecondary}" 
+                                                           FontSize="11"
+                                                           FontWeight="Medium"
+                                                           Margin="0,0,0,6"/>
+                                            <TextBox x:Name="nudMaxPlayers" 
+                                                         Text="10" 
+                                                         Style="{StaticResource GlassTextBox}"/>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Row="1" Grid.Column="1" Margin="10,16,0,0">
+                                            <TextBlock Text="Max Ping" 
+                                                           Foreground="{StaticResource TextSecondary}" 
+                                                           FontSize="11"
+                                                           FontWeight="Medium"
+                                                           Margin="0,0,0,6"/>
+                                            <TextBox x:Name="nudMaxPing" 
+                                                         Text="1000" 
+                                                         Style="{StaticResource GlassTextBox}"/>
+                                        </StackPanel>
+
+                                        <Button Grid.Row="2" 
+                                                    Grid.ColumnSpan="2" 
+                                                    Content="Create Room" 
+                                                    Style="{StaticResource PrimaryButton}" 
+                                                    Click="btnCreateRoom_Click" 
+                                                    Margin="0,20,0,0"/>
+                                    </Grid>
+                                </GroupBox>
+
+                                <!-- Leave Room -->
+                                <GroupBox Header="LEAVE ROOM" Style="{StaticResource GlassGroupBox}">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Button Grid.Column="0" 
+                                                    Content="Leave Room" 
+                                                    Style="{StaticResource GlassButton}" 
+                                                    Click="btnLeaveRoom_Click" 
+                                                    Margin="0,0,10,0"/>
+                                        <Button Grid.Column="1" 
+                                                    Content="Leave All Rooms" 
+                                                    Style="{StaticResource GlassButton}" 
+                                                    Click="btnLeaveAll_Click" 
+                                                    Margin="10,0,0,0"/>
+                                    </Grid>
+                                </GroupBox>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+
+                    <!-- Players Tab -->
+                    <TabItem Header="Players">
+                        <Grid Margin="0,20,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Button Grid.Row="0" 
+                                        Content="Refresh Player List" 
+                                        Style="{StaticResource PrimaryButton}" 
+                                        Click="btnRefreshPlayers_Click"
+                                        HorizontalAlignment="Stretch"
+                                        Margin="0,0,0,16"/>
+
+                            <ListBox x:Name="lstPlayers" 
+                                         Grid.Row="1"
+                                         Style="{StaticResource GlassListBox}"
+                                         Margin="0,0,0,16"/>
+
+                            <GroupBox Grid.Row="2" 
+                                          Header="MOVEMENT CONTROLS" 
+                                          Style="{StaticResource GlassGroupBox}">
+                                <StackPanel>
+                                    <CheckBox x:Name="chkOrbit" 
+                                                  Content="Orbit Selected Actor" 
+                                                  Foreground="{StaticResource TextPrimary}"
+                                                  Checked="chkOrbit_Checked" 
+                                                  Unchecked="chkOrbit_Unchecked"
+                                                  Margin="0,0,0,10"/>
+                                    <CheckBox x:Name="chkFollow" 
+                                                  Content="Follow Selected Actor" 
+                                                  Foreground="{StaticResource TextPrimary}"
+                                                  Checked="chkFollow_Checked" 
+                                                  Unchecked="chkFollow_Unchecked"
+                                                  Margin="0,0,0,16"/>
+
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Button Grid.Column="0" 
+                                                    Content="Orbit Actor (All)" 
+                                                    Style="{StaticResource WarningButton}" 
+                                                    Click="btnOrbitAll_Click" 
+                                                    Margin="0,0,10,0"/>
+                                        <Button Grid.Column="1" 
+                                                    Content="Follow Actor (All)" 
+                                                    Style="{StaticResource PrimaryButton}" 
+                                                    Click="btnFollowAll_Click" 
+                                                    Margin="10,0,0,0"/>
+                                    </Grid>
+
+                                    <Grid Margin="0,12,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Button Grid.Column="0" 
+                                                    Content="Start Movement" 
+                                                    Style="{StaticResource SuccessButton}" 
+                                                    Click="btnStartMovement_Click" 
+                                                    Margin="0,0,10,0"/>
+                                        <Button Grid.Column="1" 
+                                                    Content="Stop Movement" 
+                                                    Style="{StaticResource GlassButton}" 
+                                                    Click="btnStopMovement_Click" 
+                                                    Margin="10,0,0,0"/>
+                                    </Grid>
+                                </StackPanel>
+                            </GroupBox>
+                        </Grid>
+                    </TabItem>
+
+                    <!-- Combat Tab -->
+                    <TabItem Header="Combat">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <StackPanel Margin="0,20,0,0">
+                                <!-- Damage Player -->
+                                <GroupBox Header="DAMAGE ACTIONS" Style="{StaticResource GlassGroupBox}">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,10,0">
+                                            <TextBlock Text="Target Player" 
+                                                           Foreground="{StaticResource TextSecondary}" 
+                                                           FontSize="11"
+                                                           FontWeight="Medium"
+                                                           Margin="0,0,0,6"/>
+                                            <ComboBox x:Name="cmbTargetPlayer" 
+                                                          Style="{StaticResource GlassComboBox}"/>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Row="0" Grid.Column="1" Margin="10,0,0,0">
+                                            <TextBlock Text="Damage Amount" 
+                                                           Foreground="{StaticResource TextSecondary}" 
+                                                           FontSize="11"
+                                                           FontWeight="Medium"
+                                                           Margin="0,0,0,6"/>
+                                            <TextBox x:Name="nudDamage" 
+                                                         Text="50" 
+                                                         Style="{StaticResource GlassTextBox}"/>
+                                        </StackPanel>
+
+                                        <CheckBox Grid.Row="1" 
+                                                      Grid.ColumnSpan="2" 
+                                                      x:Name="chkHeadshot" 
+                                                      Content="Headshot" 
+                                                      Foreground="{StaticResource TextPrimary}"
+                                                      Margin="0,12,0,0"/>
+
+                                        <Button Grid.Row="2" 
+                                                    Grid.ColumnSpan="2" 
+                                                    Content="Damage Target Player" 
+                                                    Style="{StaticResource DangerButton}" 
+                                                    Click="btnDamagePlayer_Click"
+                                                    Margin="0,12,0,0"/>
+                                    </Grid>
+                                </GroupBox>
+
+                                <!-- Combat Animations -->
+                                <GroupBox Header="COMBAT ANIMATIONS" Style="{StaticResource GlassGroupBox}">
+                                    <UniformGrid Columns="2" Rows="2">
+                                        <Button Content="Show Hitmarker" 
+                                                    Style="{StaticResource GlassButton}" 
+                                                    Click="btnShowHitmarker_Click" 
+                                                    Margin="0,0,10,10"/>
+                                        <Button Content="Melee Attack" 
+                                                    Style="{StaticResource GlassButton}" 
+                                                    Click="btnMeleeAttack_Click" 
+                                                    Margin="10,0,0,10"/>
+                                        <Button Content="Reload" 
+                                                    Style="{StaticResource GlassButton}" 
+                                                    Click="btnReload_Click" 
+                                                    Margin="0,10,10,0"/>
+                                        <Button Content="Throw Grenade" 
+                                                    Style="{StaticResource GlassButton}" 
+                                                    Click="btnThrowGrenade_Click" 
+                                                    Margin="10,10,0,0"/>
+                                    </UniformGrid>
+                                </GroupBox>
+
+                                <!-- Killstreaks -->
+                                <GroupBox Header="KILLSTREAKS" Style="{StaticResource GlassGroupBox}">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <StackPanel Grid.Row="0">
+                                            <TextBlock Text="Killstreak Type" 
+                                                           Foreground="{StaticResource TextSecondary}" 
+                                                           FontSize="11"
+                                                           FontWeight="Medium"
+                                                           Margin="0,0,0,6"/>
+                                            <ComboBox x:Name="cmbKillstreak" 
+                                                          Style="{StaticResource GlassComboBox}">
+                                                <ComboBoxItem Content="UAV"/>
+                                                <ComboBoxItem Content="Super Soldier"/>
+                                                <ComboBoxItem Content="Counter UAV"/>
+                                                <ComboBoxItem Content="Advanced UAV"/>
+                                                <ComboBoxItem Content="Haste"/>
+                                                <ComboBoxItem Content="Nuke"/>
+                                            </ComboBox>
+                                        </StackPanel>
+
+                                        <CheckBox Grid.Row="1" 
+                                                      x:Name="chkSameTeam" 
+                                                      Content="Same Team Only" 
+                                                      Foreground="{StaticResource TextPrimary}"
+                                                      Margin="0,12,0,0"/>
+
+                                        <Button Grid.Row="2" 
+                                                    Content="Activate Killstreak" 
+                                                    Style="{StaticResource PrimaryButton}" 
+                                                    Click="btnActivateKillstreak_Click"
+                                                    Margin="0,12,0,0"/>
+
+                                        <Button Grid.Row="3" 
+                                                    Content="NUKE" 
+                                                    Style="{StaticResource DangerButton}" 
+                                                    Click="btnNuke_Click"
+                                                    Margin="0,12,0,0"/>
+                                    </Grid>
+                                </GroupBox>
+
+                                <!-- Bulk Killstreaks -->
+                                <GroupBox Header="BULK KILLSTREAKS" Style="{StaticResource GlassGroupBox}">
+                                    <StackPanel>
+                                        <TextBlock Text="Activate killstreaks on all spawned bots" 
+                                                       Foreground="{StaticResource TextSecondary}" 
+                                                       FontSize="11"
+                                                       Margin="0,0,0,8"/>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Button Grid.Column="0" 
+                                                        Content="All: UAV" 
+                                                        Style="{StaticResource SuccessButton}" 
+                                                        Click="btnAllUAV_Click" 
+                                                        Margin="0,0,10,0"/>
+                                            <Button Grid.Column="1" 
+                                                        Content="All: Super Soldier" 
+                                                        Style="{StaticResource WarningButton}" 
+                                                        Click="btnAllSuperSoldier_Click" 
+                                                        Margin="10,0,0,0"/>
+                                        </Grid>
+                                    </StackPanel>
+                                </GroupBox>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+
+                    <!-- Game Control Tab -->
+                    <TabItem Header="Game Control">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <StackPanel Margin="0,20,0,0">
+                                <!-- Visual Effects -->
+                                <GroupBox Header="VISUAL EFFECTS" Style="{StaticResource GlassGroupBox}">
+                                    <UniformGrid Columns="2">
+                                        <Button Content="Flash Effect" 
+                                                    Style="{StaticResource GlassButton}" 
+                                                    Click="btnFlash_Click" 
+                                                    Margin="0,0,10,0"/>
+                                        <Button Content="Teleport" 
+                                                    Style="{StaticResource GlassButton}" 
+                                                    Click="btnTeleport_Click" 
+                                                    Margin="10,0,0,0"/>
+                                    </UniformGrid>
+                                </GroupBox>
+
+                                <!-- Time Control -->
+                                <GroupBox Header="TIME SCALE CONTROL" Style="{StaticResource GlassGroupBox}">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                                            <TextBlock Text="Time Scale Multiplier" 
+                                                           Foreground="{StaticResource TextSecondary}" 
+                                                           FontSize="11"
+                                                           FontWeight="Medium"
+                                                           Margin="0,0,0,6"/>
+                                            <TextBox x:Name="nudTimeScale" 
+                                                         Text="1.0" 
+                                                         Style="{StaticResource GlassTextBox}"/>
+                                        </StackPanel>
+
+                                        <Button Grid.Column="1" 
+                                                    Content="Set" 
+                                                    Style="{StaticResource PrimaryButton}" 
+                                                    Click="btnSetTimeScale_Click"
+                                                    VerticalAlignment="Bottom"/>
+                                    </Grid>
+                                </GroupBox>
+
+                                <!-- Match Control -->
+                                <GroupBox Header="MATCH CONTROL" Style="{StaticResource GlassGroupBox}">
+                                    <StackPanel>
+                                        <CheckBox x:Name="chkMatchOver" 
+                                                      Content="Match Over State" 
+                                                      Foreground="{StaticResource TextPrimary}"
+                                                      Margin="0,0,0,12"/>
+                                        <Button Content="Toggle Match Over" 
+                                                    Style="{StaticResource WarningButton}" 
+                                                    Click="btnMatchOver_Click"/>
+                                    </StackPanel>
+                                </GroupBox>
+
+                                <!-- Announcements -->
+                                <GroupBox Header="SEND ANNOUNCEMENT" Style="{StaticResource GlassGroupBox}">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <StackPanel Grid.Row="0">
+                                            <TextBlock Text="Announcement Text" 
+                                                           Foreground="{StaticResource TextSecondary}" 
+                                                           FontSize="11"
+                                                           FontWeight="Medium"
+                                                           Margin="0,0,0,6"/>
+                                            <TextBox x:Name="txtAnnounce" 
+                                                         Style="{StaticResource GlassTextBox}"
+                                                         Height="80"
+                                                         TextWrapping="Wrap"
+                                                         AcceptsReturn="True"
+                                                         VerticalScrollBarVisibility="Auto"/>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Row="1" Margin="0,12,0,0">
+                                            <TextBlock Text="Duration (seconds)" 
+                                                           Foreground="{StaticResource TextSecondary}" 
+                                                           FontSize="11"
+                                                           FontWeight="Medium"
+                                                           Margin="0,0,0,6"/>
+                                            <TextBox x:Name="nudDuration" 
+                                                         Text="5.0" 
+                                                         Style="{StaticResource GlassTextBox}"/>
+                                        </StackPanel>
+
+                                        <Button Grid.Row="2" 
+                                                    Content="Send Announcement" 
+                                                    Style="{StaticResource PrimaryButton}" 
+                                                    Click="btnSendAnnouncement_Click"
+                                                    Margin="0,12,0,0"/>
+                                    </Grid>
+                                </GroupBox>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+
+                    <!-- Chat Tab -->
+                    <TabItem Header="Chat">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <StackPanel Margin="0,20,0,0">
+                                <GroupBox Header="SEND CHAT MESSAGE" Style="{StaticResource GlassGroupBox}">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <StackPanel Grid.Row="0">
+                                            <TextBlock Text="Chat Message" 
+                                                           Foreground="{StaticResource TextSecondary}" 
+                                                           FontSize="11"
+                                                           FontWeight="Medium"
+                                                           Margin="0,0,0,6"/>
+                                            <TextBox x:Name="txtChatMessage" 
+                                                         Style="{StaticResource GlassTextBox}"
+                                                         Height="100"
+                                                         TextWrapping="Wrap"
+                                                         AcceptsReturn="True"
+                                                         VerticalScrollBarVisibility="Auto"/>
+                                        </StackPanel>
+
+                                        <GroupBox Grid.Row="1" 
+                                                      Header="RGB COLOR" 
+                                                      Style="{StaticResource GlassGroupBox}"
+                                                      Margin="0,16,0,0">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                                                    <TextBlock Text="Red" 
+                                                                   Foreground="{StaticResource TextSecondary}" 
+                                                                   FontSize="11"
+                                                                   FontWeight="Medium"
+                                                                   Margin="0,0,0,6"/>
+                                                    <TextBox x:Name="nudColorR" 
+                                                                 Text="255" 
+                                                                 Style="{StaticResource GlassTextBox}"/>
+                                                </StackPanel>
+
+                                                <StackPanel Grid.Column="1" Margin="5,0">
+                                                    <TextBlock Text="Green" 
+                                                                   Foreground="{StaticResource TextSecondary}" 
+                                                                   FontSize="11"
+                                                                   FontWeight="Medium"
+                                                                   Margin="0,0,0,6"/>
+                                                    <TextBox x:Name="nudColorG" 
+                                                                 Text="255" 
+                                                                 Style="{StaticResource GlassTextBox}"/>
+                                                </StackPanel>
+
+                                                <StackPanel Grid.Column="2" Margin="10,0,0,0">
+                                                    <TextBlock Text="Blue" 
+                                                                   Foreground="{StaticResource TextSecondary}" 
+                                                                   FontSize="11"
+                                                                   FontWeight="Medium"
+                                                                   Margin="0,0,0,6"/>
+                                                    <TextBox x:Name="nudColorB" 
+                                                                 Text="255" 
+                                                                 Style="{StaticResource GlassTextBox}"/>
+                                                </StackPanel>
+                                            </Grid>
+                                        </GroupBox>
+
+                                        <Grid Grid.Row="2" Margin="0,16,0,0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Button Grid.Column="0" 
+                                                        Content="Send Chat Message" 
+                                                        Style="{StaticResource PrimaryButton}" 
+                                                        Click="btnSendChat_Click"
+                                                        Margin="0,0,10,0"/>
+                                            <Button Grid.Column="1" 
+                                                        Content="Send to All Bots" 
+                                                        Style="{StaticResource SuccessButton}" 
+                                                        Click="btnSendChatAll_Click"
+                                                        Margin="10,0,0,0"/>
+                                        </Grid>
+                                    </Grid>
+                                </GroupBox>
+
+                                <!-- RPC Playground -->
+                                <GroupBox Header="RPC PLAYGROUND" Style="{StaticResource GlassGroupBox}">
+                                    <StackPanel>
+                                        <TextBlock Text="Quick RPC Actions" 
+                                                       Foreground="{StaticResource TextSecondary}" 
+                                                       FontSize="11"
+                                                       Margin="0,0,0,8"/>
+
+                                        <UniformGrid Columns="2" Rows="3">
+                                            <Button Content="Show Perk Message" 
+                                                        Style="{StaticResource GlassButton}" 
+                                                        Click="btnShowPerk_Click" 
+                                                        Margin="0,0,10,10"/>
+                                            <Button Content="Send Auth Token" 
+                                                        Style="{StaticResource GlassButton}" 
+                                                        Click="btnSendAuth_Click" 
+                                                        Margin="10,0,0,10"/>
+                                            <Button Content="Become Master Client" 
+                                                        Style="{StaticResource WarningButton}" 
+                                                        Click="btnBecomeMaster_Click" 
+                                                        Margin="0,5,10,10"/>
+                                            <Button Content="Request Pickups" 
+                                                        Style="{StaticResource GlassButton}" 
+                                                        Click="btnRequestPickups_Click" 
+                                                        Margin="10,5,0,10"/>
+                                            <Button Content="Show Debug Capsule" 
+                                                        Style="{StaticResource GlassButton}" 
+                                                        Click="btnDebugCapsule_Click" 
+                                                        Margin="0,5,10,0"/>
+                                            <Button Content="Update K/D Ratio" 
+                                                        Style="{StaticResource GlassButton}" 
+                                                        Click="btnUpdateKD_Click" 
+                                                        Margin="10,5,0,0"/>
+                                        </UniformGrid>
+                                    </StackPanel>
+                                </GroupBox>
+
+                                <!-- Bulk Actions -->
+                                <GroupBox Header="BULK BOT ACTIONS" Style="{StaticResource GlassGroupBox}">
+                                    <StackPanel>
+                                        <TextBlock Text="Execute actions on all spawned bots" 
+                                                       Foreground="{StaticResource TextSecondary}" 
+                                                       FontSize="11"
+                                                       Margin="0,0,0,8"/>
+
+                                        <UniformGrid Columns="2" Rows="2">
+                                            <Button Content="All: Show Hitmarker" 
+                                                        Style="{StaticResource PrimaryButton}" 
+                                                        Click="btnAllShowHitmarker_Click" 
+                                                        Margin="0,0,10,10"/>
+                                            <Button Content="All: Melee Attack" 
+                                                        Style="{StaticResource PrimaryButton}" 
+                                                        Click="btnAllMelee_Click" 
+                                                        Margin="10,0,0,10"/>
+                                            <Button Content="All: Reload" 
+                                                        Style="{StaticResource PrimaryButton}" 
+                                                        Click="btnAllReload_Click" 
+                                                        Margin="0,5,10,0"/>
+                                            <Button Content="All: Flash Effect" 
+                                                        Style="{StaticResource WarningButton}" 
+                                                        Click="btnAllFlash_Click" 
+                                                        Margin="10,5,0,0"/>
+                                        </UniformGrid>
+                                    </StackPanel>
+                                </GroupBox>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+
+                    <!-- Logs Tab -->
+                    <TabItem Header="Logs">
+                        <Grid Margin="0,20,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- Event Log -->
+                            <GroupBox Grid.Row="0" 
+                                          Header="EVENT LOG" 
+                                          Style="{StaticResource GlassGroupBox}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <ListBox x:Name="lstEvents" 
+                                                 Grid.Row="0"
+                                                 Style="{StaticResource GlassListBox}"
+                                                 FontFamily="Consolas"
+                                                 FontSize="11"/>
+
+                                    <StackPanel Grid.Row="1" 
+                                                    Orientation="Horizontal" 
+                                                    Margin="0,12,0,0">
+                                        <CheckBox x:Name="chkAutoScroll" 
+                                                      Content="Auto-scroll" 
+                                                      IsChecked="True"
+                                                      Foreground="{StaticResource TextPrimary}"
+                                                      VerticalAlignment="Center"/>
+                                        <Button Content="Clear" 
+                                                    Style="{StaticResource GlassButton}" 
+                                                    Click="btnClearEvents_Click"
+                                                    Margin="16,0,0,0"
+                                                    Padding="16,6"/>
+                                    </StackPanel>
+                                </Grid>
+                            </GroupBox>
+
+                            <!-- Console Output -->
+                            <GroupBox Grid.Row="2" 
+                                          Header="CONSOLE OUTPUT" 
+                                          Style="{StaticResource GlassGroupBox}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBox x:Name="txtConsole" 
+                                                 Grid.Row="0"
+                                                 Style="{StaticResource GlassTextBox}"
+                                                 IsReadOnly="True"
+                                                 VerticalScrollBarVisibility="Auto"
+                                                 FontFamily="Consolas"
+                                                 FontSize="11"
+                                                 TextWrapping="Wrap"/>
+
+                                    <Button Grid.Row="1" 
+                                                Content="Clear Console" 
+                                                Style="{StaticResource GlassButton}" 
+                                                Click="btnClearConsole_Click"
+                                                HorizontalAlignment="Right"
+                                                Margin="0,12,0,0"
+                                                Padding="16,6"/>
+                                </Grid>
+                            </GroupBox>
+                        </Grid>
+                    </TabItem>
+
+                    <!-- Exploits Tab -->
+                    <TabItem Header="Exploits">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <StackPanel Margin="0,20,0,0">
+                                <!-- Map Exploits -->
+                                <GroupBox Header="MAP EXPLOITS" Style="{StaticResource GlassGroupBox}">
+                                    <StackPanel>
+                                        <Border Background="#20FF3B47" 
+                                                    BorderBrush="{StaticResource DangerColor}"
+                                                    BorderThickness="1"
+                                                    CornerRadius="8"
+                                                    Padding="12"
+                                                    Margin="0,0,0,16">
+                                            <StackPanel>
+                                                <TextBlock Text="⚠️ WARNING" 
+                                                               Foreground="{StaticResource DangerColor}"
+                                                               FontWeight="Bold"
+                                                               FontSize="13"
+                                                               Margin="0,0,0,4"/>
+                                                <TextBlock Text="These exploits affect all players in the room and may be detectable. Use at your own risk." 
+                                                               Foreground="{StaticResource TextSecondary}"
+                                                               FontSize="11"
+                                                               TextWrapping="Wrap"/>
+                                            </StackPanel>
+                                        </Border>
+
+                                        <CheckBox x:Name="chkRemoveFloorCollider" 
+                                                      Content="Remove Floor Collider (Global)" 
+                                                      Foreground="{StaticResource TextPrimary}"
+                                                      Checked="chkRemoveFloorCollider_Checked"
+                                                      Unchecked="chkRemoveFloorCollider_Unchecked"
+                                                      Margin="0,0,0,8"/>
+                                        <TextBlock Text="Removes floor collision by sending invalid rotation data. All players will fall through the map." 
+                                                       Foreground="{StaticResource TextSecondary}"
+                                                       FontSize="11"
+                                                       TextWrapping="Wrap"
+                                                       Margin="20,0,0,16"/>
+
+                                        <CheckBox x:Name="chkSpamMovement" 
+                                                      Content="Spam Movement Packets" 
+                                                      Foreground="{StaticResource TextPrimary}"
+                                                      Checked="chkSpamMovement_Checked"
+                                                      Unchecked="chkSpamMovement_Unchecked"
+                                                      Margin="0,0,0,8"/>
+                                        <TextBlock Text="Floods the server with movement packets. May cause lag or crashes." 
+                                                       Foreground="{StaticResource TextSecondary}"
+                                                       FontSize="11"
+                                                       TextWrapping="Wrap"
+                                                       Margin="20,0,0,0"/>
+                                    </StackPanel>
+                                </GroupBox>
+
+                                <!-- Position Exploits -->
+                                <GroupBox Header="POSITION EXPLOITS" Style="{StaticResource GlassGroupBox}">
+                                    <StackPanel>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Button Grid.Row="0" Grid.Column="0"
+                                                        Content="Teleport Out of Bounds" 
+                                                        Style="{StaticResource WarningButton}" 
+                                                        Click="btnTeleportOOB_Click"
+                                                        Margin="0,0,10,10"/>
+                                            <Button Grid.Row="0" Grid.Column="1"
+                                                        Content="Teleport to Sky" 
+                                                        Style="{StaticResource WarningButton}" 
+                                                        Click="btnTeleportSky_Click"
+                                                        Margin="10,0,0,10"/>
+                                            <Button Grid.Row="1" Grid.Column="0"
+                                                        Content="Teleport Underground" 
+                                                        Style="{StaticResource WarningButton}" 
+                                                        Click="btnTeleportUnderground_Click"
+                                                        Margin="0,5,10,0"/>
+                                            <Button Grid.Row="1" Grid.Column="1"
+                                                        Content="Teleport All Bots OOB" 
+                                                        Style="{StaticResource DangerButton}" 
+                                                        Click="btnTeleportAllOOB_Click"
+                                                        Margin="10,5,0,0"/>
+                                        </Grid>
+                                    </StackPanel>
+                                </GroupBox>
+
+                                <!-- Packet Exploits -->
+                                <GroupBox Header="PACKET EXPLOITS" Style="{StaticResource GlassGroupBox}">
+                                    <StackPanel>
+                                        <Button Content="Send Invalid Spawn Packet" 
+                                                    Style="{StaticResource GlassButton}" 
+                                                    Click="btnInvalidSpawn_Click"
+                                                    Margin="0,0,0,10"/>
+                                        <Button Content="Corrupt Movement Data" 
+                                                    Style="{StaticResource GlassButton}" 
+                                                    Click="btnCorruptMovement_Click"
+                                                    Margin="0,0,0,10"/>
+                                        <Button Content="Send Max Value RPCs" 
+                                                    Style="{StaticResource GlassButton}" 
+                                                    Click="btnMaxValueRPC_Click"
+                                                    Margin="0,0,0,10"/>
+                                        <Button Content="Flood RPC Events" 
+                                                    Style="{StaticResource DangerButton}" 
+                                                    Click="btnFloodRPC_Click"/>
+                                    </StackPanel>
+                                </GroupBox>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+                </TabControl>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

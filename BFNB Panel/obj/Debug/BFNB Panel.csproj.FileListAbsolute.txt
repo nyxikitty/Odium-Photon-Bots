@@ -1,0 +1,18 @@
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\obj\Debug\BFNB Panel.csproj.AssemblyReference.cache
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\obj\Debug\MainWindow.baml
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\obj\Debug\MainWindow.g.cs
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\obj\Debug\App.g.cs
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\obj\Debug\BFNB Panel_MarkupCompile.cache
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\obj\Debug\BFNB Panel.g.resources
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\obj\Debug\BFNB_Panel.Properties.Resources.resources
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\obj\Debug\BFNB Panel.csproj.GenerateResource.cache
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\obj\Debug\BFNB Panel.csproj.CoreCompileInputs.cache
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\obj\Debug\BFNB Panel_Content.g.cs
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\bin\Debug\BFNB Panel.exe.config
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\bin\Debug\BFNB Panel.exe
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\bin\Debug\BFNB Panel.pdb
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\bin\Debug\Photon-NetStandard.dll
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\bin\Debug\PhotonRealtime-DotNet.dll
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\obj\Debug\BFNB Panel.csproj.Up2Date
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\obj\Debug\BFNB Panel.exe
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\obj\Debug\BFNB Panel.pdb
