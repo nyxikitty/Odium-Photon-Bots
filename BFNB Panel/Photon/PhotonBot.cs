@@ -8,13 +8,6 @@ using BLF_Odium_Network_Bots.Photon;
 
 namespace OdiumPhoton.Core
 {
-
-// <summary>
-
-// Automated Photon client for testing and load simulation
-
-// </summary>
-
     public class PhotonBot : LoadBalancingClient
     {
         #region Constants
@@ -532,3 +525,4 @@ namespace OdiumPhoton.Core
     }
 
 }
+
