@@ -58,8 +58,6 @@ namespace OdiumPhoton.Core
             set => _isActive = value;
         }
 
-// <summary>Access to all RPC methods</summary>
-
         public RPCs RPC => _rpcs;
 
         public enum MovementMode
@@ -525,4 +523,5 @@ namespace OdiumPhoton.Core
     }
 
 }
+
 
