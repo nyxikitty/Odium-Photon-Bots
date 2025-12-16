@@ -8,9 +8,13 @@ using BLF_Odium_Network_Bots.Photon;
 
 namespace OdiumPhoton.Core
 {
-    /// <summary>
-    /// Automated Photon client for testing and load simulation
-    /// </summary>
+
+// <summary>
+
+// Automated Photon client for testing and load simulation
+
+// </summary>
+
     public class PhotonBot : LoadBalancingClient
     {
         #region Constants
@@ -61,7 +65,8 @@ namespace OdiumPhoton.Core
             set => _isActive = value;
         }
 
-        /// <summary>Access to all RPC methods</summary>
+// <summary>Access to all RPC methods</summary>
+
         public RPCs RPC => _rpcs;
 
         public enum MovementMode
@@ -133,16 +138,15 @@ namespace OdiumPhoton.Core
                 {
                     if (IsFloorColliderRemovalActive)
                     {
-                        // Send corrupted movement to remove floor collision
+
                         BroadcastCorruptedMovement();
                     }
                     else if (_isActive)
                     {
-                        // Normal movement
+
                         BroadcastMovement();
                     }
 
-                    // Spam movement packets if enabled
                     if (IsMovementSpamActive)
                     {
                         for (int i = 0; i < 10; i++)
@@ -298,7 +302,8 @@ namespace OdiumPhoton.Core
             OpRaiseEvent(MOVEMENT_EVENT, packet, options, send);
         }
 
-        /// <summary>Send corrupted movement packet with invalid quaternion</summary>
+// <summary>Send corrupted movement packet with invalid quaternion</summary>
+
         public void BroadcastCorruptedMovement()
         {
             if (!_hasSpawned) return;
@@ -306,7 +311,6 @@ namespace OdiumPhoton.Core
             Vec3 position = CalculateNextPosition();
             Vec3 encrypted = FairCollection.GetEncryptedVector3(position);
 
-            // Create corrupted quaternion with float.MaxValue to break collision
             var corruptedQuat = new Quat(float.MaxValue, float.MaxValue, float.MaxValue, 1f);
 
             short x = (short)(position.x * 1000);
@@ -416,7 +420,9 @@ namespace OdiumPhoton.Core
         #endregion
 
         #region Messaging
-        /// <summary>Send chat message using RPC system</summary>
+
+// <summary>Send chat message using RPC system</summary>
+
         public void SendChat(string message)
         {
             if (!_hasSpawned) return;
@@ -428,7 +434,8 @@ namespace OdiumPhoton.Core
             _rpcs.RpcSendChatMessage(displayName, message, 255, 255, 255);
         }
 
-        /// <summary>Send announcement using RPC system</summary>
+// <summary>Send announcement using RPC system</summary>
+
         public void SendAnnouncement(string text, float duration = 5f)
         {
             if (!_hasSpawned) return;
@@ -523,4 +530,5 @@ namespace OdiumPhoton.Core
         }
         #endregion
     }
+
 }
