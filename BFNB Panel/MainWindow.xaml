@@ -1,0 +1,911 @@
+﻿<Window x:Class="OdiumBotManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Odium Bot Manager" 
+        Height="900" Width="1600"
+        Background="#0F0F14"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanResizeWithGrip">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="Primary" Color="#6366F1"/>
+        <SolidColorBrush x:Key="Secondary" Color="#8B5CF6"/>
+        <SolidColorBrush x:Key="Success" Color="#10B981"/>
+        <SolidColorBrush x:Key="Warning" Color="#F59E0B"/>
+        <SolidColorBrush x:Key="Danger" Color="#EF4444"/>
+        <SolidColorBrush x:Key="TextPrimary" Color="#F9FAFB"/>
+        <SolidColorBrush x:Key="TextSecondary" Color="#9CA3AF"/>
+        <SolidColorBrush x:Key="Surface" Color="#1A1A24"/>
+        <SolidColorBrush x:Key="SurfaceLight" Color="#24243A"/>
+
+        <Style x:Key="ModernButton" TargetType="Button">
+            <Setter Property="Background" Value="#25253F"/>
+            <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="24,12"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="12"
+                                Padding="{TemplateBinding Padding}">
+                            <Border.Effect>
+                                <DropShadowEffect Color="#000000" BlurRadius="20" ShadowDepth="0" Opacity="0.3"/>
+                            </Border.Effect>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#32325A"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#1E1E30"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="PrimaryButton" TargetType="Button" BasedOn="{StaticResource ModernButton}">
+            <Setter Property="Background" Value="{StaticResource Primary}"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#7C3AED"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="DangerButton" TargetType="Button" BasedOn="{StaticResource ModernButton}">
+            <Setter Property="Background" Value="{StaticResource Danger}"/>
+        </Style>
+
+        <Style x:Key="ModernTextBox" TargetType="TextBox">
+            <Setter Property="Background" Value="#1A1A24"/>
+            <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+            <Setter Property="BorderBrush" Value="#2D2D44"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="16,12"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="CaretBrush" Value="{StaticResource TextPrimary}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="10">
+                            <ScrollViewer x:Name="PART_ContentHost" Margin="{TemplateBinding Padding}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ModernComboBox" TargetType="ComboBox">
+            <Setter Property="Background" Value="#1A1A24"/>
+            <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+            <Setter Property="BorderBrush" Value="#2D2D44"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="16,12"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Height" Value="44"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid>
+                            <ToggleButton x:Name="ToggleButton"
+                                        Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        Focusable="False"
+                                        IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                        ClickMode="Press">
+                                <ToggleButton.Template>
+                                    <ControlTemplate TargetType="ToggleButton">
+                                        <Border x:Name="Border"
+                                                Background="{TemplateBinding Background}"
+                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                BorderThickness="{TemplateBinding BorderThickness}"
+                                                CornerRadius="10">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="30"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Path Grid.Column="1"
+                                                      HorizontalAlignment="Center"
+                                                      VerticalAlignment="Center"
+                                                      Data="M 0 0 L 4 4 L 8 0 Z"
+                                                      Fill="{StaticResource TextSecondary}"/>
+                                            </Grid>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="Border" Property="Background" Value="#24243A"/>
+                                                <Setter TargetName="Border" Property="BorderBrush" Value="#3D3D5C"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </ToggleButton.Template>
+                            </ToggleButton>
+                            <ContentPresenter x:Name="ContentSite"
+                                            IsHitTestVisible="False"
+                                            Content="{TemplateBinding SelectionBoxItem}"
+                                            ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                            Margin="16,0,30,0"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Left"/>
+                            <Popup x:Name="Popup"
+                                   Placement="Bottom"
+                                   IsOpen="{TemplateBinding IsDropDownOpen}"
+                                   AllowsTransparency="True"
+                                   Focusable="False"
+                                   PopupAnimation="Slide">
+                                <Grid x:Name="DropDown"
+                                      SnapsToDevicePixels="True"
+                                      MinWidth="{TemplateBinding ActualWidth}"
+                                      MaxHeight="300">
+                                    <Border x:Name="DropDownBorder"
+                                            Background="#1A1A24"
+                                            BorderBrush="#2D2D44"
+                                            BorderThickness="1"
+                                            CornerRadius="10"
+                                            Margin="0,4,0,0">
+                                        <Border.Effect>
+                                            <DropShadowEffect Color="#000000" BlurRadius="30" ShadowDepth="0" Opacity="0.6"/>
+                                        </Border.Effect>
+                                        <ScrollViewer Margin="4" SnapsToDevicePixels="True">
+                                            <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained"/>
+                                        </ScrollViewer>
+                                    </Border>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="ComboBoxItem">
+            <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Padding" Value="16,10"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBoxItem">
+                        <Border x:Name="Border"
+                                Background="{TemplateBinding Background}"
+                                Padding="{TemplateBinding Padding}"
+                                CornerRadius="6"
+                                Margin="4,2">
+                            <ContentPresenter/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsHighlighted" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="{StaticResource Primary}"/>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#252540"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="ScrollBar">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Width" Value="10"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ScrollBar">
+                        <Grid>
+                            <Track x:Name="PART_Track" IsDirectionReversed="True">
+                                <Track.Thumb>
+                                    <Thumb>
+                                        <Thumb.Template>
+                                            <ControlTemplate TargetType="Thumb">
+                                                <Border x:Name="ThumbBorder"
+                                                        Background="#3D3D5C"
+                                                        CornerRadius="5"
+                                                        Width="6"
+                                                        Margin="2"/>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter TargetName="ThumbBorder" Property="Background" Value="#4D4D6C"/>
+                                                    </Trigger>
+                                                    <Trigger Property="IsDragging" Value="True">
+                                                        <Setter TargetName="ThumbBorder" Property="Background" Value="{StaticResource Primary}"/>
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Thumb.Template>
+                                    </Thumb>
+                                </Track.Thumb>
+                            </Track>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="Orientation" Value="Horizontal">
+                    <Setter Property="Height" Value="10"/>
+                    <Setter Property="Width" Value="Auto"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ScrollBar">
+                                <Grid>
+                                    <Track x:Name="PART_Track">
+                                        <Track.Thumb>
+                                            <Thumb>
+                                                <Thumb.Template>
+                                                    <ControlTemplate TargetType="Thumb">
+                                                        <Border x:Name="ThumbBorder"
+                                                                Background="#3D3D5C"
+                                                                CornerRadius="5"
+                                                                Height="6"
+                                                                Margin="2"/>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter TargetName="ThumbBorder" Property="Background" Value="#4D4D6C"/>
+                                                            </Trigger>
+                                                            <Trigger Property="IsDragging" Value="True">
+                                                                <Setter TargetName="ThumbBorder" Property="Background" Value="{StaticResource Primary}"/>
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Thumb.Template>
+                                            </Thumb>
+                                        </Track.Thumb>
+                                    </Track>
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="ModernListBox" TargetType="ListBox">
+            <Setter Property="Background" Value="#16161F"/>
+            <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+            <Setter Property="BorderBrush" Value="#2D2D44"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBox">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="12">
+                            <ScrollViewer Padding="8">
+                                <ItemsPresenter/>
+                            </ScrollViewer>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="ListBoxItem">
+            <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Padding" Value="16,10"/>
+            <Setter Property="Margin" Value="4,2"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border x:Name="Border"
+                                Background="{TemplateBinding Background}"
+                                Padding="{TemplateBinding Padding}"
+                                CornerRadius="8"
+                                Margin="{TemplateBinding Margin}">
+                            <ContentPresenter/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#1A1A2E"/>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="{StaticResource Primary}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="Card" TargetType="Border">
+            <Setter Property="Background" Value="#16161F"/>
+            <Setter Property="BorderBrush" Value="#2D2D44"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="16"/>
+            <Setter Property="Padding" Value="24"/>
+        </Style>
+
+        <Style TargetType="TabControl">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+
+        <Style TargetType="TabItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabItem">
+                        <Border x:Name="Border" 
+                                Background="Transparent"
+                                Padding="20,10"
+                                Margin="0,0,8,0"
+                                CornerRadius="8">
+                            <ContentPresenter ContentSource="Header"
+                                            TextBlock.Foreground="{StaticResource TextSecondary}"
+                                            TextBlock.FontSize="13"
+                                            TextBlock.FontWeight="Medium"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#1A1A2E"/>
+                                <Setter Property="TextBlock.Foreground" Value="{StaticResource TextPrimary}"/>
+                                <Setter Property="TextBlock.FontWeight" Value="SemiBold"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#131320"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="ContextMenu">
+            <Setter Property="Background" Value="#1A1A24"/>
+            <Setter Property="BorderBrush" Value="#2D2D44"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ContextMenu">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="12"
+                                Padding="6">
+                            <Border.Effect>
+                                <DropShadowEffect Color="#000000" BlurRadius="30" ShadowDepth="0" Opacity="0.5"/>
+                            </Border.Effect>
+                            <StackPanel IsItemsHost="True"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="MenuItem">
+            <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Padding" Value="12,8"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="MenuItem">
+                        <Border x:Name="Border"
+                                Background="{TemplateBinding Background}"
+                                Padding="{TemplateBinding Padding}"
+                                CornerRadius="6"
+                                Margin="2">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <ContentPresenter ContentSource="Header" Grid.Column="0"/>
+                                <Path Grid.Column="1" 
+                                      x:Name="Arrow"
+                                      Data="M 0 0 L 4 4 L 0 8 Z"
+                                      Fill="{StaticResource TextSecondary}"
+                                      Margin="8,0,0,0"
+                                      VerticalAlignment="Center"
+                                      Visibility="Collapsed"/>
+                                <Popup x:Name="PART_Popup"
+                                       Placement="Right"
+                                       IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                                       AllowsTransparency="True"
+                                       Focusable="False"
+                                       PopupAnimation="Slide"
+                                       HorizontalOffset="-4">
+                                    <Border Background="#1A1A24"
+                                            BorderBrush="#2D2D44"
+                                            BorderThickness="1"
+                                            CornerRadius="8"
+                                            Padding="4">
+                                        <Border.Effect>
+                                            <DropShadowEffect Color="#000000" BlurRadius="30" ShadowDepth="0" Opacity="0.5"/>
+                                        </Border.Effect>
+                                        <StackPanel IsItemsHost="True"/>
+                                    </Border>
+                                </Popup>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Role" Value="TopLevelHeader">
+                                <Setter TargetName="PART_Popup" Property="Placement" Value="Bottom"/>
+                            </Trigger>
+                            <Trigger Property="Role" Value="SubmenuHeader">
+                                <Setter TargetName="Arrow" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                            <Trigger Property="IsHighlighted" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="{StaticResource Primary}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="280"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="320"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" Background="#0A0A0F" BorderBrush="#1A1A24" BorderThickness="0,0,1,0" Padding="20">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Margin="0,0,0,24">
+                    <TextBlock Text="Odium" FontSize="24" FontWeight="Bold" Foreground="{StaticResource Primary}" Margin="0,0,0,4"/>
+                    <TextBlock Text="Bot Manager" FontSize="14" Foreground="{StaticResource TextSecondary}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1">
+                    <TextBlock Text="INSTANCES" FontSize="11" FontWeight="SemiBold" Foreground="{StaticResource TextSecondary}" Margin="8,0,0,12"/>
+                    <ListBox x:Name="lstBots" Style="{StaticResource ModernListBox}" SelectionChanged="lstBots_SelectionChanged" Height="Auto"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="2" Margin="0,16,0,0">
+                    <Button Content="+ Add Bot" Style="{StaticResource PrimaryButton}" Click="btnAddBot_Click" Margin="0,0,0,8"/>
+                    <Button Content="Remove Bot" Style="{StaticResource ModernButton}" Click="btnRemoveBot_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Column="1" Margin="24">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0" Style="{StaticResource Card}" Margin="0,0,0,20">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="STATUS" FontSize="10" Foreground="{StaticResource TextSecondary}" Margin="0,0,0,8"/>
+                        <TextBlock x:Name="lblConnStatusVal" Text="Disconnected" FontSize="16" FontWeight="SemiBold" Foreground="{StaticResource Success}"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1">
+                        <TextBlock Text="PING" FontSize="10" Foreground="{StaticResource TextSecondary}" Margin="0,0,0,8"/>
+                        <TextBlock x:Name="lblPingVal" Text="—" FontSize="16" FontWeight="SemiBold" Foreground="{StaticResource TextPrimary}"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2">
+                        <TextBlock Text="ROOM" FontSize="10" Foreground="{StaticResource TextSecondary}" Margin="0,0,0,8"/>
+                        <TextBlock x:Name="lblRoomVal" Text="—" FontSize="16" FontWeight="SemiBold" Foreground="{StaticResource TextPrimary}"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="3">
+                        <TextBlock Text="PLAYERS" FontSize="10" Foreground="{StaticResource TextSecondary}" Margin="0,0,0,8"/>
+                        <TextBlock x:Name="lblPlayerCountVal" Text="—" FontSize="16" FontWeight="SemiBold" Foreground="{StaticResource TextPrimary}"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <TabControl Grid.Row="1">
+                <TabItem Header="Configuration">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,16,0,0">
+                        <StackPanel>
+                            <Border Style="{StaticResource Card}" Margin="0,0,0,16">
+                                <StackPanel>
+                                    <TextBlock Text="Bot Configuration" FontSize="16" FontWeight="SemiBold" Foreground="{StaticResource TextPrimary}" Margin="0,0,0,20"/>
+
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+
+                                        <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,12,0">
+                                            <TextBlock Text="Bot Name" FontSize="12" Foreground="{StaticResource TextSecondary}" Margin="0,0,0,8"/>
+                                            <TextBox x:Name="txtBotName" Text="" Style="{StaticResource ModernTextBox}"/>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Row="0" Grid.Column="1" Margin="12,0,0,0">
+                                            <TextBlock Text="Clan Tag" FontSize="12" Foreground="{StaticResource TextSecondary}" Margin="0,0,0,8"/>
+                                            <TextBox x:Name="txtClanTag" Text="" Style="{StaticResource ModernTextBox}"/>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,16,12,0">
+                                            <TextBlock Text="Team" FontSize="12" Foreground="{StaticResource TextSecondary}" Margin="0,0,0,8"/>
+                                            <ComboBox x:Name="cmbTeam" Style="{StaticResource ModernComboBox}">
+                                                <ComboBoxItem Content="Team 1" IsSelected="True"/>
+                                                <ComboBoxItem Content="Team 2"/>
+                                            </ComboBox>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Row="1" Grid.Column="1" Margin="12,16,0,0">
+                                            <TextBlock Text="Rank" FontSize="12" Foreground="{StaticResource TextSecondary}" Margin="0,0,0,8"/>
+                                            <TextBox x:Name="nudRank" Text="200" Style="{StaticResource ModernTextBox}"/>
+                                        </StackPanel>
+                                    </Grid>
+
+                                    <UniformGrid Columns="3" Margin="0,24,0,0">
+                                        <Button Content="Connect" Style="{StaticResource PrimaryButton}" Click="btnConnect_Click" Margin="0,0,8,0"/>
+                                        <Button Content="Disconnect" Style="{StaticResource ModernButton}" Click="btnDisconnect_Click" Margin="4,0"/>
+                                        <Button Content="Spawn" Style="{StaticResource ModernButton}" Click="btnSpawn_Click" Margin="8,0,0,0"/>
+                                    </UniformGrid>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+
+                <TabItem Header="Rooms">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,16,0,0">
+                        <StackPanel>
+                            <Border Style="{StaticResource Card}" Margin="0,0,0,16">
+                                <StackPanel>
+                                    <TextBlock Text="Quick Join" FontSize="16" FontWeight="SemiBold" Foreground="{StaticResource TextPrimary}" Margin="0,0,0,20"/>
+                                    <UniformGrid Columns="2">
+                                        <Button Content="Join Random" Style="{StaticResource PrimaryButton}" Click="btnJoinRandom_Click" Margin="0,0,8,0"/>
+                                        <Button Content="Join Random (All)" Style="{StaticResource ModernButton}" Click="btnJoinRandomAll_Click" Margin="8,0,0,0"/>
+                                    </UniformGrid>
+                                </StackPanel>
+                            </Border>
+
+                            <Border Style="{StaticResource Card}" Margin="0,0,0,16">
+                                <StackPanel>
+                                    <TextBlock Text="Join Specific Room" FontSize="16" FontWeight="SemiBold" Foreground="{StaticResource TextPrimary}" Margin="0,0,0,20"/>
+                                    <TextBlock Text="Room Name" FontSize="12" Foreground="{StaticResource TextSecondary}" Margin="0,0,0,8"/>
+                                    <TextBox x:Name="txtRoomName" Style="{StaticResource ModernTextBox}" Margin="0,0,0,16"/>
+                                    <UniformGrid Columns="2">
+                                        <Button Content="Join" Style="{StaticResource PrimaryButton}" Click="btnJoinByName_Click" Margin="0,0,8,0"/>
+                                        <Button Content="Join (All)" Style="{StaticResource ModernButton}" Click="btnJoinByNameAll_Click" Margin="8,0,0,0"/>
+                                    </UniformGrid>
+                                </StackPanel>
+                            </Border>
+
+                            <Border Style="{StaticResource Card}" Margin="0,0,0,16">
+                                <StackPanel>
+                                    <TextBlock Text="Create Room" FontSize="16" FontWeight="SemiBold" Foreground="{StaticResource TextPrimary}" Margin="0,0,0,20"/>
+
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+
+                                        <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,8,0">
+                                            <TextBlock Text="Map" FontSize="12" Foreground="{StaticResource TextSecondary}" Margin="0,0,0,8"/>
+                                            <ComboBox x:Name="cmbMap" Style="{StaticResource ModernComboBox}">
+                                                <ComboBoxItem Content="Outpost" IsSelected="True"/>
+                                                <ComboBoxItem Content="Woods"/>
+                                                <ComboBoxItem Content="Park"/>
+                                            </ComboBox>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Row="0" Grid.Column="1" Margin="8,0,0,0">
+                                            <TextBlock Text="Mode" FontSize="12" Foreground="{StaticResource TextSecondary}" Margin="0,0,0,8"/>
+                                            <ComboBox x:Name="cmbGameMode" Style="{StaticResource ModernComboBox}">
+                                                <ComboBoxItem Content="Team Deathmatch" IsSelected="True"/>
+                                                <ComboBoxItem Content="Free For All"/>
+                                            </ComboBox>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,16,8,0">
+                                            <TextBlock Text="Max Players" FontSize="12" Foreground="{StaticResource TextSecondary}" Margin="0,0,0,8"/>
+                                            <TextBox x:Name="nudMaxPlayers" Text="10" Style="{StaticResource ModernTextBox}"/>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Row="1" Grid.Column="1" Margin="8,16,0,0">
+                                            <TextBlock Text="Max Ping" FontSize="12" Foreground="{StaticResource TextSecondary}" Margin="0,0,0,8"/>
+                                            <TextBox x:Name="nudMaxPing" Text="1000" Style="{StaticResource ModernTextBox}"/>
+                                        </StackPanel>
+
+                                        <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Create Room" Style="{StaticResource PrimaryButton}" Click="btnCreateRoom_Click" Margin="0,20,0,0"/>
+                                    </Grid>
+                                </StackPanel>
+                            </Border>
+
+                            <Border Style="{StaticResource Card}">
+                                <StackPanel>
+                                    <TextBlock Text="Room Properties" FontSize="16" FontWeight="SemiBold" Foreground="{StaticResource TextPrimary}" Margin="0,0,0,20"/>
+
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="2*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                                            <TextBlock Text="Property" FontSize="12" Foreground="{StaticResource TextSecondary}" Margin="0,0,0,8"/>
+                                            <ComboBox x:Name="cmbRoomProperty" Style="{StaticResource ModernComboBox}" SelectionChanged="cmbRoomProperty_SelectionChanged">
+                                                <ComboBoxItem Content="mapName" Tag="string"/>
+                                                <ComboBoxItem Content="maxPlayers" Tag="byte"/>
+                                            </ComboBox>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="1" Margin="8,0,0,0">
+                                            <TextBlock Text="Value" FontSize="12" Foreground="{StaticResource TextSecondary}" Margin="0,0,0,8"/>
+                                            <TextBox x:Name="txtRoomPropertyValue" Style="{StaticResource ModernTextBox}"/>
+                                        </StackPanel>
+                                    </Grid>
+
+                                    <Button Content="Update Property" Style="{StaticResource PrimaryButton}" Click="btnUpdateRoomProperty_Click" Margin="0,16,0,0"/>
+
+                                    <UniformGrid Columns="2" Margin="0,16,0,0">
+                                        <Button Content="Leave Room" Style="{StaticResource ModernButton}" Click="btnLeaveRoom_Click" Margin="0,0,8,0"/>
+                                        <Button Content="Leave All" Style="{StaticResource ModernButton}" Click="btnLeaveAll_Click" Margin="8,0,0,0"/>
+                                    </UniformGrid>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+
+                <TabItem Header="Combat">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,16,0,0">
+                        <StackPanel>
+                            <Border Style="{StaticResource Card}" Margin="0,0,0,16">
+                                <StackPanel>
+                                    <TextBlock Text="Weapon Control" FontSize="16" FontWeight="SemiBold" Foreground="{StaticResource TextPrimary}" Margin="0,0,0,20"/>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBox x:Name="txtWeaponType" Text="14" Style="{StaticResource ModernTextBox}" Margin="0,0,12,0"/>
+                                        <Button Grid.Column="1" Content="Set Weapon" Style="{StaticResource PrimaryButton}" Click="btnSetWeaponType_Click"/>
+                                    </Grid>
+                                </StackPanel>
+                            </Border>
+
+                            <Border Style="{StaticResource Card}" Margin="0,0,0,16">
+                                <StackPanel>
+                                    <TextBlock Text="Animations" FontSize="16" FontWeight="SemiBold" Foreground="{StaticResource TextPrimary}" Margin="0,0,0,20"/>
+                                    <UniformGrid Columns="2" Rows="2">
+                                        <Button Content="Hitmarker" Style="{StaticResource ModernButton}" Click="btnShowHitmarker_Click" Margin="0,0,8,8"/>
+                                        <Button Content="Melee" Style="{StaticResource ModernButton}" Click="btnMeleeAttack_Click" Margin="8,0,0,8"/>
+                                        <Button Content="Reload" Style="{StaticResource ModernButton}" Click="btnReload_Click" Margin="0,8,8,0"/>
+                                        <Button Content="Grenade" Style="{StaticResource ModernButton}" Click="btnThrowGrenade_Click" Margin="8,8,0,0"/>
+                                    </UniformGrid>
+                                </StackPanel>
+                            </Border>
+
+                            <Border Style="{StaticResource Card}" Margin="0,0,0,16">
+                                <StackPanel>
+                                    <TextBlock Text="Killstreaks" FontSize="16" FontWeight="SemiBold" Foreground="{StaticResource TextPrimary}" Margin="0,0,0,20"/>
+                                    <TextBlock Text="Select Killstreak" FontSize="12" Foreground="{StaticResource TextSecondary}" Margin="0,0,0,8"/>
+                                    <ComboBox x:Name="cmbKillstreak" Style="{StaticResource ModernComboBox}" Margin="0,0,0,12">
+                                        <ComboBoxItem Content="UAV"/>
+                                        <ComboBoxItem Content="Super Soldier"/>
+                                        <ComboBoxItem Content="Counter UAV"/>
+                                        <ComboBoxItem Content="Advanced UAV"/>
+                                        <ComboBoxItem Content="Haste"/>
+                                        <ComboBoxItem Content="Nuke"/>
+                                    </ComboBox>
+                                    <CheckBox x:Name="chkSameTeam" Content="Same Team Only" Foreground="{StaticResource TextPrimary}" Margin="0,0,0,16"/>
+                                    <Button Content="Activate" Style="{StaticResource PrimaryButton}" Click="btnActivateKillstreak_Click" Margin="0,0,0,12"/>
+                                    <Button Content="NUKE" Style="{StaticResource DangerButton}" Click="btnNuke_Click"/>
+                                </StackPanel>
+                            </Border>
+
+                            <Border Style="{StaticResource Card}">
+                                <StackPanel>
+                                    <TextBlock Text="Bulk Actions" FontSize="16" FontWeight="SemiBold" Foreground="{StaticResource TextPrimary}" Margin="0,0,0,20"/>
+                                    <UniformGrid Columns="2">
+                                        <Button Content="All: UAV" Style="{StaticResource ModernButton}" Click="btnAllUAV_Click" Margin="0,0,8,0"/>
+                                        <Button Content="All: Super Soldier" Style="{StaticResource ModernButton}" Click="btnAllSuperSoldier_Click" Margin="8,0,0,0"/>
+                                    </UniformGrid>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+
+                <TabItem Header="Game Control">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,16,0,0">
+                        <StackPanel>
+                            <Border Style="{StaticResource Card}" Margin="0,0,0,16">
+                                <StackPanel>
+                                    <TextBlock Text="Effects" FontSize="16" FontWeight="SemiBold" Foreground="{StaticResource TextPrimary}" Margin="0,0,0,20"/>
+                                    <UniformGrid Columns="2">
+                                        <Button Content="Flash" Style="{StaticResource ModernButton}" Click="btnFlash_Click" Margin="0,0,8,0"/>
+                                        <Button Content="Teleport" Style="{StaticResource ModernButton}" Click="btnTeleport_Click" Margin="8,0,0,0"/>
+                                    </UniformGrid>
+                                </StackPanel>
+                            </Border>
+
+                            <Border Style="{StaticResource Card}" Margin="0,0,0,16">
+                                <StackPanel>
+                                    <TextBlock Text="Time Scale" FontSize="16" FontWeight="SemiBold" Foreground="{StaticResource TextPrimary}" Margin="0,0,0,20"/>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBox x:Name="nudTimeScale" Text="1.0" Style="{StaticResource ModernTextBox}" Margin="0,0,12,0"/>
+                                        <Button Grid.Column="1" Content="Set" Style="{StaticResource PrimaryButton}" Click="btnSetTimeScale_Click"/>
+                                    </Grid>
+                                </StackPanel>
+                            </Border>
+
+                            <Border Style="{StaticResource Card}" Margin="0,0,0,16">
+                                <StackPanel>
+                                    <TextBlock Text="Announcements" FontSize="16" FontWeight="SemiBold" Foreground="{StaticResource TextPrimary}" Margin="0,0,0,20"/>
+                                    <TextBox x:Name="txtAnnounce" Style="{StaticResource ModernTextBox}" Height="80" TextWrapping="Wrap" Margin="0,0,0,12"/>
+                                    <TextBox x:Name="nudDuration" Text="5.0" Style="{StaticResource ModernTextBox}" Margin="0,0,0,12"/>
+                                    <Button Content="Send" Style="{StaticResource PrimaryButton}" Click="btnSendAnnouncement_Click"/>
+                                </StackPanel>
+                            </Border>
+
+                            <Border Style="{StaticResource Card}">
+                                <StackPanel>
+                                    <TextBlock Text="Exploits" FontSize="16" FontWeight="SemiBold" Foreground="{StaticResource TextPrimary}" Margin="0,0,0,20"/>
+                                    <CheckBox x:Name="chkRemoveFloorCollider" Content="Remove Floor Collider" Foreground="{StaticResource TextPrimary}" 
+                                             Checked="chkRemoveFloorCollider_Checked" Unchecked="chkRemoveFloorCollider_Unchecked" Margin="0,0,0,12"/>
+                                    <CheckBox x:Name="chkMatchOver" Content="Match Over State" Foreground="{StaticResource TextPrimary}"/>
+                                    <Button Content="Toggle Match Over" Style="{StaticResource ModernButton}" Click="btnMatchOver_Click" Margin="0,12,0,0"/>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+
+                <TabItem Header="Chat">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,16,0,0">
+                        <StackPanel>
+                            <Border Style="{StaticResource Card}" Margin="0,0,0,16">
+                                <StackPanel>
+                                    <TextBlock Text="Send Message" FontSize="16" FontWeight="SemiBold" Foreground="{StaticResource TextPrimary}" Margin="0,0,0,20"/>
+                                    <TextBox x:Name="txtChatMessage" Style="{StaticResource ModernTextBox}" Height="100" TextWrapping="Wrap" Margin="0,0,0,16"/>
+
+                                    <Grid Margin="0,0,0,16">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBox x:Name="nudColorR" Text="255" Style="{StaticResource ModernTextBox}" Margin="0,0,8,0"/>
+                                        <TextBox x:Name="nudColorG" Text="255" Style="{StaticResource ModernTextBox}" Grid.Column="1" Margin="4,0"/>
+                                        <TextBox x:Name="nudColorB" Text="255" Style="{StaticResource ModernTextBox}" Grid.Column="2" Margin="8,0,0,0"/>
+                                    </Grid>
+
+                                    <UniformGrid Columns="2">
+                                        <Button Content="Send" Style="{StaticResource PrimaryButton}" Click="btnSendChat_Click" Margin="0,0,8,0"/>
+                                        <Button Content="Send All" Style="{StaticResource ModernButton}" Click="btnSendChatAll_Click" Margin="8,0,0,0"/>
+                                    </UniformGrid>
+                                </StackPanel>
+                            </Border>
+
+                            <Border Style="{StaticResource Card}">
+                                <StackPanel>
+                                    <TextBlock Text="Bulk Actions" FontSize="16" FontWeight="SemiBold" Foreground="{StaticResource TextPrimary}" Margin="0,0,0,20"/>
+                                    <UniformGrid Columns="2" Rows="2">
+                                        <Button Content="All: Hitmarker" Style="{StaticResource ModernButton}" Click="btnAllShowHitmarker_Click" Margin="0,0,8,8"/>
+                                        <Button Content="All: Melee" Style="{StaticResource ModernButton}" Click="btnAllMelee_Click" Margin="8,0,0,8"/>
+                                        <Button Content="All: Reload" Style="{StaticResource ModernButton}" Click="btnAllReload_Click" Margin="0,8,8,0"/>
+                                        <Button Content="All: Flash" Style="{StaticResource ModernButton}" Click="btnAllFlash_Click" Margin="8,8,0,0"/>
+                                    </UniformGrid>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+
+                <TabItem Header="Console">
+                    <Grid Margin="0,16,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Border Style="{StaticResource Card}">
+                            <TextBox x:Name="txtConsole" Style="{StaticResource ModernTextBox}" IsReadOnly="True" 
+                                   VerticalScrollBarVisibility="Auto" FontFamily="Consolas" FontSize="11" TextWrapping="Wrap"/>
+                        </Border>
+
+                        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,16,0,0">
+                            <CheckBox x:Name="chkAutoScroll" Content="Auto-scroll" IsChecked="True" Foreground="{StaticResource TextPrimary}" VerticalAlignment="Center"/>
+                            <Button Content="Clear" Style="{StaticResource ModernButton}" Click="btnClearConsole_Click" Margin="16,0,0,0" Padding="16,8"/>
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </Grid>
+
+        <Border Grid.Column="2" Background="#0A0A0F" BorderBrush="#1A1A24" BorderThickness="1,0,0,0" Padding="20">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Margin="0,0,0,24">
+                    <TextBlock Text="Players" FontSize="20" FontWeight="Bold" Foreground="{StaticResource TextPrimary}" Margin="0,0,0,4"/>
+                    <TextBlock Text="Right-click for actions" FontSize="12" Foreground="{StaticResource TextSecondary}"/>
+                </StackPanel>
+
+                <ListBox x:Name="lstPlayers" Grid.Row="1" Style="{StaticResource ModernListBox}" MouseRightButtonUp="lstPlayers_RightClick" Margin="0,0,0,16">
+                    <ListBox.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Damage (25 HP)" Click="ContextMenu_Damage_Click"/>
+                            <MenuItem Header="Kill (100 HP)" Click="ContextMenu_Kill_Click"/>
+                            <MenuItem Header="Force Suicide" Click="ContextMenu_ForceSuicide_Click"/>
+                            <Separator/>
+                            <MenuItem Header="Orbit Options">
+                                <MenuItem Header="Orbit This Player" Click="ContextMenu_Orbit_Click"/>
+                                <MenuItem Header="All Bots Orbit Player" Click="ContextMenu_AllOrbit_Click"/>
+                                <Separator/>
+                                <MenuItem Header="Orbit Mode: Tight Circle" Click="ContextMenu_OrbitTight_Click"/>
+                                <MenuItem Header="Orbit Mode: Normal" Click="ContextMenu_OrbitNormal_Click"/>
+                                <MenuItem Header="Orbit Mode: Wide Circle" Click="ContextMenu_OrbitWide_Click"/>
+                                <Separator/>
+                                <MenuItem Header="Orbit Mode: Fast Spin" Click="ContextMenu_OrbitFast_Click"/>
+                                <MenuItem Header="Orbit Mode: Slow Spin" Click="ContextMenu_OrbitSlow_Click"/>
+                                <Separator/>
+                                <MenuItem Header="Stop All Orbit" Click="ContextMenu_StopAllOrbit_Click"/>
+                            </MenuItem>
+                            <Separator/>
+                            <MenuItem Header="Spoof Actions">
+                                <MenuItem Header="Show Hitmarker" Click="ContextMenu_SpoofHitmarker_Click"/>
+                                <MenuItem Header="Melee Attack" Click="ContextMenu_SpoofMelee_Click"/>
+                                <MenuItem Header="Reload" Click="ContextMenu_SpoofReload_Click"/>
+                                <MenuItem Header="Throw Grenade" Click="ContextMenu_SpoofGrenade_Click"/>
+                                <MenuItem Header="Send Chat Message" Click="ContextMenu_SpoofChat_Click"/>
+                            </MenuItem>
+                            <Separator/>
+                            <MenuItem Header="Flash This Player" Click="ContextMenu_Flash_Click"/>
+                            <MenuItem Header="Teleport to This Player" Click="ContextMenu_Teleport_Click"/>
+                        </ContextMenu>
+                    </ListBox.ContextMenu>
+                </ListBox>
+
+                <StackPanel Grid.Row="2">
+                    <UniformGrid Columns="2" Margin="0,0,0,12">
+                        <Button Content="Start" Style="{StaticResource PrimaryButton}" Click="btnStartMovement_Click" Margin="0,0,8,0"/>
+                        <Button Content="Stop" Style="{StaticResource ModernButton}" Click="btnStopMovement_Click" Margin="8,0,0,0"/>
+                    </UniformGrid>
+                    <Button Content="Refresh" Style="{StaticResource ModernButton}" Click="btnRefreshPlayers_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <ListBox x:Name="lstEvents" Visibility="Collapsed"/>
+    </Grid>
+</Window>

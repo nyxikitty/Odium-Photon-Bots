@@ -1,0 +1,22 @@
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\bin\Release\BFNB Panel.exe.config
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\bin\Release\BFNB Panel.exe
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\bin\Release\BFNB Panel.pdb
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\bin\Release\Newtonsoft.Json.dll
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\bin\Release\Photon-NetStandard.dll
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\bin\Release\PhotonRealtime-DotNet.dll
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\bin\Release\Newtonsoft.Json.xml
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\obj\Release\BFNB Panel.csproj.AssemblyReference.cache
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\obj\Release\CustomDialogs.baml
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\obj\Release\MainWindow.baml
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\obj\Release\CustomDialogs.g.cs
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\obj\Release\MainWindow.g.cs
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\obj\Release\App.g.cs
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\obj\Release\BFNB Panel_Content.g.cs
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\obj\Release\BFNB Panel_MarkupCompile.cache
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\obj\Release\BFNB Panel.g.resources
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\obj\Release\BFNB_Panel.Properties.Resources.resources
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\obj\Release\BFNB Panel.csproj.GenerateResource.cache
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\obj\Release\BFNB Panel.csproj.CoreCompileInputs.cache
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\obj\Release\BFNB Panel.csproj.Up2Date
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\obj\Release\BFNB Panel.exe
+C:\Users\Snoofz\source\repos\BFNB Panel\BFNB Panel\obj\Release\BFNB Panel.pdb

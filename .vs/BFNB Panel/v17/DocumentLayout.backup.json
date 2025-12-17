@@ -1,0 +1,396 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|c:\\users\\snoofz\\source\\repos\\bfnb panel\\bfnb panel\\photon\\rpc\\rpcs.messaging.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|solutionrelative:bfnb panel\\photon\\rpc\\rpcs.messaging.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|c:\\users\\snoofz\\source\\repos\\bfnb panel\\bfnb panel\\core\\photonbot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|solutionrelative:bfnb panel\\core\\photonbot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\bfnb panel\\photon\\customtypes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|solutionrelative:bfnb panel\\photon\\customtypes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\bfnb panel\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|solutionrelative:bfnb panel\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|c:\\users\\snoofz\\source\\repos\\bfnb panel\\bfnb panel\\core\\photonbot.spawn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|solutionrelative:bfnb panel\\core\\photonbot.spawn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|c:\\users\\snoofz\\source\\repos\\bfnb panel\\bfnb panel\\core\\photonbot.broadcasting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|solutionrelative:bfnb panel\\core\\photonbot.broadcasting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|c:\\users\\snoofz\\source\\repos\\bfnb panel\\bfnb panel\\types\\quat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|solutionrelative:bfnb panel\\types\\quat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|c:\\users\\snoofz\\source\\repos\\bfnb panel\\bfnb panel\\types\\vec3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|solutionrelative:bfnb panel\\types\\vec3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|c:\\users\\snoofz\\source\\repos\\bfnb panel\\bfnb panel\\utils\\eventlogger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|solutionrelative:bfnb panel\\utils\\eventlogger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|c:\\users\\snoofz\\source\\repos\\bfnb panel\\bfnb panel\\utils\\faircollection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|solutionrelative:bfnb panel\\utils\\faircollection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|c:\\users\\snoofz\\source\\repos\\bfnb panel\\bfnb panel\\photon\\rpc\\rpcs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|solutionrelative:bfnb panel\\photon\\rpc\\rpcs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|c:\\users\\snoofz\\source\\repos\\bfnb panel\\bfnb panel\\photon\\rpc\\rpcs.gamestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|solutionrelative:bfnb panel\\photon\\rpc\\rpcs.gamestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|c:\\users\\snoofz\\source\\repos\\bfnb panel\\bfnb panel\\photon\\rpc\\rpcs.exploits.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|solutionrelative:bfnb panel\\photon\\rpc\\rpcs.exploits.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|c:\\users\\snoofz\\source\\repos\\bfnb panel\\bfnb panel\\core\\photonbot.eventhandlers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|solutionrelative:bfnb panel\\core\\photonbot.eventhandlers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|c:\\users\\snoofz\\source\\repos\\bfnb panel\\bfnb panel\\core\\photonbot.messaging.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|solutionrelative:bfnb panel\\core\\photonbot.messaging.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|c:\\users\\snoofz\\source\\repos\\bfnb panel\\bfnb panel\\core\\photonbot.roomoperations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|solutionrelative:bfnb panel\\core\\photonbot.roomoperations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|c:\\users\\snoofz\\source\\repos\\bfnb panel\\bfnb panel\\core\\photonbot.movement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|solutionrelative:bfnb panel\\core\\photonbot.movement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\bfnb panel\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|solutionrelative:bfnb panel\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\bfnb panel\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|solutionrelative:bfnb panel\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\bfnb panel\\extra\\matchrecorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|solutionrelative:bfnb panel\\extra\\matchrecorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\bfnb panel\\extra\\helpers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|solutionrelative:bfnb panel\\extra\\helpers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\bfnb panel\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{591660F7-8442-4A20-B29C-FE41621B85AB}|BFNB Panel\\BFNB Panel.csproj|solutionrelative:bfnb panel\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RPCs.Messaging.cs",
+              "DocumentMoniker": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\Photon\\RPC\\RPCs.Messaging.cs",
+              "RelativeDocumentMoniker": "BFNB Panel\\Photon\\RPC\\RPCs.Messaging.cs",
+              "ToolTip": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\Photon\\RPC\\RPCs.Messaging.cs",
+              "RelativeToolTip": "BFNB Panel\\Photon\\RPC\\RPCs.Messaging.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAIwBkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-16T22:45:22.819Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PhotonBot.Spawn.cs",
+              "DocumentMoniker": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\Core\\PhotonBot.Spawn.cs",
+              "RelativeDocumentMoniker": "BFNB Panel\\Core\\PhotonBot.Spawn.cs",
+              "ToolTip": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\Core\\PhotonBot.Spawn.cs",
+              "RelativeToolTip": "BFNB Panel\\Core\\PhotonBot.Spawn.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAjwDAAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-16T22:44:19.053Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Vec3.cs",
+              "DocumentMoniker": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\Types\\Vec3.cs",
+              "RelativeDocumentMoniker": "BFNB Panel\\Types\\Vec3.cs",
+              "ToolTip": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\Types\\Vec3.cs",
+              "RelativeToolTip": "BFNB Panel\\Types\\Vec3.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-16T22:42:27.958Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PhotonBot.cs",
+              "DocumentMoniker": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\Core\\PhotonBot.cs",
+              "RelativeDocumentMoniker": "BFNB Panel\\Core\\PhotonBot.cs",
+              "ToolTip": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\Core\\PhotonBot.cs",
+              "RelativeToolTip": "BFNB Panel\\Core\\PhotonBot.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-11T21:06:36.051Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Quat.cs",
+              "DocumentMoniker": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\Types\\Quat.cs",
+              "RelativeDocumentMoniker": "BFNB Panel\\Types\\Quat.cs",
+              "ToolTip": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\Types\\Quat.cs",
+              "RelativeToolTip": "BFNB Panel\\Types\\Quat.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-12T22:05:46.936Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PhotonBot.Broadcasting.cs",
+              "DocumentMoniker": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\Core\\PhotonBot.Broadcasting.cs",
+              "RelativeDocumentMoniker": "BFNB Panel\\Core\\PhotonBot.Broadcasting.cs",
+              "ToolTip": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\Core\\PhotonBot.Broadcasting.cs",
+              "RelativeToolTip": "BFNB Panel\\Core\\PhotonBot.Broadcasting.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-16T22:37:25.941Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "BFNB Panel\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\MainWindow.xaml.cs",
+              "RelativeToolTip": "BFNB Panel\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAOAEAAAAAAAAAAAwwEcFAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-11T19:30:03.218Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CustomTypes.cs",
+              "DocumentMoniker": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\Photon\\CustomTypes.cs",
+              "RelativeDocumentMoniker": "BFNB Panel\\Photon\\CustomTypes.cs",
+              "ToolTip": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\Photon\\CustomTypes.cs",
+              "RelativeToolTip": "BFNB Panel\\Photon\\CustomTypes.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-12T22:05:37.623Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "FairCollection.cs",
+              "DocumentMoniker": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\Utils\\FairCollection.cs",
+              "RelativeDocumentMoniker": "BFNB Panel\\Utils\\FairCollection.cs",
+              "ToolTip": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\Utils\\FairCollection.cs",
+              "RelativeToolTip": "BFNB Panel\\Utils\\FairCollection.cs",
+              "ViewState": "AgIAANsAAAAAAAAAAAAcwAcBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-12T22:05:50.03Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "RPCs.cs",
+              "DocumentMoniker": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\Photon\\RPC\\RPCs.cs",
+              "RelativeDocumentMoniker": "BFNB Panel\\Photon\\RPC\\RPCs.cs",
+              "ToolTip": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\Photon\\RPC\\RPCs.cs",
+              "RelativeToolTip": "BFNB Panel\\Photon\\RPC\\RPCs.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAwwC0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-11T20:02:33.672Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "RPCs.GameState.cs",
+              "DocumentMoniker": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\Photon\\RPC\\RPCs.GameState.cs",
+              "RelativeDocumentMoniker": "BFNB Panel\\Photon\\RPC\\RPCs.GameState.cs",
+              "ToolTip": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\Photon\\RPC\\RPCs.GameState.cs",
+              "RelativeToolTip": "BFNB Panel\\Photon\\RPC\\RPCs.GameState.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-16T22:41:11.6Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "RPCs.Exploits.cs",
+              "DocumentMoniker": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\Photon\\RPC\\RPCs.Exploits.cs",
+              "RelativeDocumentMoniker": "BFNB Panel\\Photon\\RPC\\RPCs.Exploits.cs",
+              "ToolTip": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\Photon\\RPC\\RPCs.Exploits.cs",
+              "RelativeToolTip": "BFNB Panel\\Photon\\RPC\\RPCs.Exploits.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAmwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-16T22:41:06.992Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "PhotonBot.EventHandlers.cs",
+              "DocumentMoniker": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\Core\\PhotonBot.EventHandlers.cs",
+              "RelativeDocumentMoniker": "BFNB Panel\\Core\\PhotonBot.EventHandlers.cs",
+              "ToolTip": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\Core\\PhotonBot.EventHandlers.cs",
+              "RelativeToolTip": "BFNB Panel\\Core\\PhotonBot.EventHandlers.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-16T22:37:52.292Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "PhotonBot.Messaging.cs",
+              "DocumentMoniker": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\Core\\PhotonBot.Messaging.cs",
+              "RelativeDocumentMoniker": "BFNB Panel\\Core\\PhotonBot.Messaging.cs",
+              "ToolTip": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\Core\\PhotonBot.Messaging.cs",
+              "RelativeToolTip": "BFNB Panel\\Core\\PhotonBot.Messaging.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-16T22:37:37.067Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "EventLogger.cs",
+              "DocumentMoniker": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\Utils\\EventLogger.cs",
+              "RelativeDocumentMoniker": "BFNB Panel\\Utils\\EventLogger.cs",
+              "ToolTip": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\Utils\\EventLogger.cs",
+              "RelativeToolTip": "BFNB Panel\\Utils\\EventLogger.cs",
+              "ViewState": "AgIAAEEBAAAAAAAAAAAmwFkBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-13T00:35:49.316Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "PhotonBot.RoomOperations.cs",
+              "DocumentMoniker": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\Core\\PhotonBot.RoomOperations.cs",
+              "RelativeDocumentMoniker": "BFNB Panel\\Core\\PhotonBot.RoomOperations.cs",
+              "ToolTip": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\Core\\PhotonBot.RoomOperations.cs",
+              "RelativeToolTip": "BFNB Panel\\Core\\PhotonBot.RoomOperations.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-16T22:37:46.813Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "PhotonBot.Movement.cs",
+              "DocumentMoniker": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\Core\\PhotonBot.Movement.cs",
+              "RelativeDocumentMoniker": "BFNB Panel\\Core\\PhotonBot.Movement.cs",
+              "ToolTip": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\Core\\PhotonBot.Movement.cs",
+              "RelativeToolTip": "BFNB Panel\\Core\\PhotonBot.Movement.cs",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAmwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-16T22:37:43.42Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Helpers.cs",
+              "DocumentMoniker": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\Extra\\Helpers.cs",
+              "RelativeDocumentMoniker": "BFNB Panel\\Extra\\Helpers.cs",
+              "ToolTip": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\Extra\\Helpers.cs",
+              "RelativeToolTip": "BFNB Panel\\Extra\\Helpers.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-12T22:05:48.546Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "MatchRecorder.cs",
+              "DocumentMoniker": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\Extra\\MatchRecorder.cs",
+              "RelativeDocumentMoniker": "BFNB Panel\\Extra\\MatchRecorder.cs",
+              "ToolTip": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\Extra\\MatchRecorder.cs",
+              "RelativeToolTip": "BFNB Panel\\Extra\\MatchRecorder.cs",
+              "ViewState": "AgIAAO0AAAAAAAAAAAAqwCsBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-11T21:44:42.251Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "BFNB Panel\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\MainWindow.xaml",
+              "RelativeToolTip": "BFNB Panel\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-12-11T19:30:04.857Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{269a02dc-6af8-11d3-bdc4-00c04f688e50}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "packages.config",
+              "DocumentMoniker": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\packages.config",
+              "RelativeDocumentMoniker": "BFNB Panel\\packages.config",
+              "ToolTip": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\packages.config",
+              "RelativeToolTip": "BFNB Panel\\packages.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-12-13T01:17:52.609Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\App.xaml.cs",
+              "RelativeDocumentMoniker": "BFNB Panel\\App.xaml.cs",
+              "ToolTip": "C:\\Users\\Snoofz\\source\\repos\\BFNB Panel\\BFNB Panel\\App.xaml.cs",
+              "RelativeToolTip": "BFNB Panel\\App.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-11T19:34:42.947Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
