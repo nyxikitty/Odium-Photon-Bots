@@ -1,3 +1,4 @@
 # Some bots I made for UserNumber2's Bullet Force
 
-<img width="1584" height="862" alt="image" src="https://github.com/user-attachments/assets/2b7669e5-7605-4c18-9105-c7c1796b30ef" />
+<img width="1583" height="888" alt="image" src="https://github.com/user-attachments/assets/67db919d-8b15-4609-b3f3-cdda46ff006a" />
+
